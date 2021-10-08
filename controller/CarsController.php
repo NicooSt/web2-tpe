@@ -20,4 +20,20 @@
             $car = $this->model->getCar($id);
             $this->view->showCarDesc($car);
         }
+
+        function showMarks() {
+            $marks = $this->model->getMarks();
+            $this->view->showMarksList($marks);
+        }
+
+        function filterByMark() {
+            if ($_POST['filter'] == 'Todos') {
+                $this->showHome();
+            }
+            else {
+                $mark = $_POST['filter'];
+                $cars = $this->model->getByMark($mark);
+                $this->view->showCarsByMark($mark, $cars);
+            }
+        }
     }

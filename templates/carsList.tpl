@@ -1,5 +1,24 @@
 {include file='templates/header.tpl'}
 <article>
+    <h1 class="list-title">Lista de {if !$mark == ''}{$mark}{else}{$title}{/if}</h1>
+    <form id="form-filter" method="POST" action="filter">
+        <label>Filtrar por categoría: 
+            <select name="filter">
+                <option>Todos</option>
+                <option>Fiat</option>
+                <option>Ford</option>
+                <option>Chevrolet</option>
+                <option>Mercedes-Benz</option>
+                <option>Nissan</option>
+                <option>Peugeot</option>
+                <option>Citroën</option>
+                <option>Renault</option>
+                <option>Toyota</option>
+                <option>Volkswagen</option>
+            </select>
+        </label>
+        <button type="submit">Filtrar</button> 
+    </form>
     <table>
         <thead>
             <tr>

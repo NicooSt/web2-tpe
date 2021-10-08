@@ -16,6 +16,7 @@ nav {
     margin-top: 20px;
 }
 
+/* Logo de pagina */
 .nav-logo {
     width: 240px;
     padding: 5px;
@@ -30,6 +31,7 @@ nav {
     margin: 5px 0 0 5px;
 }
 
+/* Botones de navegador */
 .nav-div-btn, .nav-div-logout {
     display: flex;
     align-items: center;
@@ -54,6 +56,7 @@ nav {
     background-color: black;
 }
 
+/* Mensaje nombre de usuario */
 .nav-div-logout p {
     font-size: 25px;
     color: whitesmoke;
@@ -61,19 +64,33 @@ nav {
     margin: 0 20px;
 }
 
+/* Mitad de pagina */
 article {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
 }
 
+/* Titulo de tabla */
+.list-title {
+    font-size: 50px;
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+/* Tabla */
 table {
     text-align: center;
     font-size: 20px;
-    margin-top: 50px;
+    margin-top: 10px;
     padding: 20px;
     background-color: whitesmoke;
     border: 2px solid black;
-    border-radius: 5px;   
+    border-radius: 5px;
 }
 
 table thead tr {
@@ -87,6 +104,7 @@ table thead tr th, table tbody tr td {
     border: 2px solid black;
 }
 
+/* Primera columna de tabla */
 table tbody tr td a {
     color: black;
     width: 100%;
@@ -98,10 +116,12 @@ table tbody tr td a {
     text-decoration: none;
 }
 
+/* Primera celda de cada fila de la primera columna */
 table tbody tr td:first-child {
     float: left;
     position: relative;
     overflow: hidden;
+    line-height: 40px;
 }
 
 table tbody tr td a:hover {
@@ -109,6 +129,7 @@ table tbody tr td a:hover {
     background-color: black;
 }
 
+/* Titulo de descripcion */
 .desc-title {
     font-size: 70px;
     text-align: center;
@@ -117,11 +138,11 @@ table tbody tr td a:hover {
     color: whitesmoke;
 }
 
+/* Lista de descripcion */
 .desc-list ul li {
     font-size: 30px;
     text-align: center;
     color: whitesmoke;
-    text-decoration: underline;
     margin-top: 5px;
 }
 
@@ -129,6 +150,7 @@ table tbody tr td a:hover {
     margin-left: 20px;
 }
 
+/* Contenedor de link 'volver' */
 .div-link {
     display: flex;
     justify-content: center;
@@ -149,4 +171,86 @@ table tbody tr td a:hover {
     color: whitesmoke;
     background-color: black;
     border: 1px solid whitesmoke;
+}
+
+/* Formulario de filtro */
+#form-filter {
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#form-filter label {
+    color: whitesmoke;
+}
+
+/* Boton filtro */
+#form-filter button {
+    color: black;
+    background-color: whitesmoke;
+    margin-left: 10px;
+    padding: 2px 5px;
+    border: 1px solid whitesmoke;
+}
+
+#form-filter button:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 1px solid whitesmoke;
+}
+
+/* Form de Registro */
+.div-form-register {
+    display: flex;
+    justify-content: center;
+}
+
+.form-register {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 280px;
+    height: 400px;
+    border: 2px solid whitesmoke;
+}
+
+.form-register p:first-child {
+    color: whitesmoke;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    margin: 0 150px 30px 150px;
+}
+
+.form-register input {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 20px;
+    width: 300px;
+    height: 40px;
+    margin: 10px 0;
+    border: 2px solid whitesmoke;
+    border-radius: 8px;
+    background-color: transparent;
+    transition: 0.25s;
+}
+
+.form-register input:focus {
+    width: 380px;
+}
+
+.form-register button {
+    width: 100px;
+    margin: 15px 150px;
+    height: 20px;
+    color: black;
+    background-color: whitesmoke;
+    border: 2px solid black;
+}
+
+.form-register p:last-child,
+.form-register p:last-child a {
+    color: whitesmoke;
 }

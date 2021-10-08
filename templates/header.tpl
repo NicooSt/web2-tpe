@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>{$title}</title>
+    <title>{if !$mark == ''}Lista de {$mark}{else}{$tab}{/if}</title>
 </head>
 
 <body>
@@ -20,10 +20,11 @@
         </div>
         <div class="nav-div-btn">
             <a href="home">Lista de autos</a>
-            <a href="#">Lista de marcas</a>
+            <a href="marks">Lista de marcas</a>
         </div>
         <div class="nav-div-logout">
             <p>Invitado</p>
             <a href="#">Log out</a>
+            <a href="register">Register</a>
         </div>
     </nav>
