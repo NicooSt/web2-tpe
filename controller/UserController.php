@@ -13,4 +13,8 @@
         function userRegister() {
             $this->view->showRegister();
         }
+
+        function userLogin() {
+            $this->view->showLogin();
+        }
     }

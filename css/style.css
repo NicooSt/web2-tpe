@@ -20,22 +20,31 @@ nav {
 .nav-logo {
     width: 240px;
     padding: 5px;
-    margin: 0 20px;
+    /* margin: 0 20px; */
     background-color: whitesmoke;
     border-radius: 5px;
 }
 
 .nav-div-logo {
-    text-align: center;
     border-radius: 5px;
-    margin: 5px 0 0 5px;
+    margin-top: 5px;
+    margin-left: 25px;
+    width: 30%;
 }
 
 /* Botones de navegador */
-.nav-div-btn, .nav-div-logout {
+.nav-div-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 40%;
+}
+
+.nav-div-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
 }
 
 .nav-div-btn a, .nav-div-logout a {
@@ -43,7 +52,7 @@ nav {
     font-weight: bold;
     color: black;
     text-decoration: none;
-    margin: 0 20px;
+    margin: 0 10px;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
@@ -65,7 +74,7 @@ nav {
 }
 
 /* Mitad de pagina */
-article {
+section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,6 +89,32 @@ article {
     text-align: center;
     text-decoration: underline;
     margin-bottom: 20px;
+}
+
+/* Formulario de filtro */
+#form-filter {
+    width: 55%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#form-filter label {
+    color: whitesmoke;
+}
+
+/* Boton filtro */
+#form-filter button {
+    color: black;
+    background-color: whitesmoke;
+    margin-left: 10px;
+    padding: 2px 5px;
+    border: 1px solid whitesmoke;
+}
+
+#form-filter button:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 1px solid whitesmoke;
 }
 
 /* Tabla */
@@ -99,20 +134,20 @@ table thead tr {
 }
 
 table thead tr th, table tbody tr td {
-    width: 300px;
-    height: 40px;
+    width: 200px;
+    height: 50px;
     border: 2px solid black;
 }
 
 /* Primera columna de tabla */
-table tbody tr td a {
+table tbody tr td:first-child a {
     color: black;
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    line-height: 40px;
+    line-height: 50px;
     text-decoration: none;
 }
 
@@ -121,12 +156,118 @@ table tbody tr td:first-child {
     float: left;
     position: relative;
     overflow: hidden;
-    line-height: 40px;
+    line-height: 50px;
 }
 
 table tbody tr td a:hover {
     color: whitesmoke;
     background-color: black;
+}
+
+table tbody tr td:last-child a {
+    text-decoration: none;
+    border: 1px solid black;
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 0 3px;
+}
+
+table tbody tr td:last-child a:hover, .form-new-car button:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 1px solid whitesmoke;
+}
+
+/* Pagina de administrador */
+.cont-admin {
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-admin {
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-admin section div:first-child {
+    display: flex;
+    justify-content: center;
+    /* margin-top: 20px; */
+}
+
+.cont-admin section div:last-child {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.cont-admin h1 {
+    font-size: 50px;
+    text-decoration: underline;
+}
+
+.cont-admin form {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    /* width: 300px; */
+    width: 1200px;
+    /* height: 280px; */
+    height: 120px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+}
+
+.cont-admin h4 {
+    font-size: 25px;
+    /* margin: 10px 0; */
+    margin: 20px 0;
+}
+
+.cont-admin input, .cont-admin select {
+    font-size: 15px;
+    /* width: 200px; */
+    width: 180px;
+    /* height: 25px; */
+    height: 30px;
+    text-align: center;
+    /* margin: 5px; */
+    margin: 10px;
+}
+
+.cont-admin button {
+    width: 100px;
+    /* height: 20px; */
+    height: 30px;
+    /* margin-top: 5px; */
+    margin-left: 10px;
+    padding: 2px 0;
+    font-weight: bold;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+}
+
+.cont-admin button:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 2px solid whitesmoke;
+}
+
+/* .cont-admin p {
+    margin-top: 15px;
+} */
+
+.cont-admin p {
+    font-size: 45px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-decoration: underline;
 }
 
 /* Titulo de descripcion */
@@ -173,32 +314,6 @@ table tbody tr td a:hover {
     border: 1px solid whitesmoke;
 }
 
-/* Formulario de filtro */
-#form-filter {
-    width: 65%;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#form-filter label {
-    color: whitesmoke;
-}
-
-/* Boton filtro */
-#form-filter button {
-    color: black;
-    background-color: whitesmoke;
-    margin-left: 10px;
-    padding: 2px 5px;
-    border: 1px solid whitesmoke;
-}
-
-#form-filter button:hover {
-    color: whitesmoke;
-    background-color: black;
-    border: 1px solid whitesmoke;
-}
-
 /* Form de Registro */
 .div-form-register {
     display: flex;
@@ -212,6 +327,7 @@ table tbody tr td a:hover {
     align-items: center;
     margin-top: 280px;
     height: 400px;
+    max-width: 460px;
     border: 2px solid whitesmoke;
 }
 
@@ -220,8 +336,9 @@ table tbody tr td a:hover {
     font-size: 40px;
     font-weight: bold;
     text-align: center;
+    width: 300px;
     margin-bottom: 30px;
-    margin: 0 150px 30px 150px;
+    margin: 0 80px 30px 80px;
 }
 
 .form-register input {
@@ -254,3 +371,8 @@ table tbody tr td a:hover {
 .form-register p:last-child a {
     color: whitesmoke;
 }
+
+/* Mostrar / Ocultar boton */
+/* .nav-div-btn a:last-child {
+    display: none;
+} */

@@ -11,4 +11,8 @@
         function showRegister() {
             $this->smarty->display('templates/userRegister.tpl');
         }
+
+        function showLogin() {
+            $this->smarty->display('templates/userLogin.tpl');
+        }
     }

@@ -1,23 +1,16 @@
 {include file='templates/header.tpl'}
-<article>
+<section>
     <h1 class="list-title">Lista de {if !$mark == ''}{$mark}{else}{$title}{/if}</h1>
-    <form id="form-filter" method="POST" action="filter">
-        <label>Filtrar por categoría: 
+    <form id="form-filter" action="filter" method="POST">
+        <label>Filtrar por marca:
             <select name="filter">
                 <option>Todos</option>
-                <option>Fiat</option>
-                <option>Ford</option>
-                <option>Chevrolet</option>
-                <option>Mercedes-Benz</option>
-                <option>Nissan</option>
-                <option>Peugeot</option>
-                <option>Citroën</option>
-                <option>Renault</option>
-                <option>Toyota</option>
-                <option>Volkswagen</option>
+                {foreach from=$marksFilter item=$mark}
+                    <option>{$mark->marca}</option>
+                {/foreach}
             </select>
         </label>
-        <button type="submit">Filtrar</button> 
+        <button type="submit">Filtrar</button>
     </form>
     <table>
         <thead>
@@ -26,6 +19,7 @@
                 <th>Marca</th>
                 <th>Origen</th>
                 <th>Año</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -35,9 +29,12 @@
                     <td>{$car->marca}</td>
                     <td>{$car->origen}</td>
                     <td>{$car->anio}</td>
+                    <td><a href="deleteCar/{$car->id_auto}">Eliminar</a></td>                   
                 </tr>
             {/foreach}
         </tbody>
     </table>
-</article>
+</section>
+{include file='templates/addCar.tpl'}
+{include file='templates/editCar.tpl'}
 {include file='templates/footer.tpl'}

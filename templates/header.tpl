@@ -19,12 +19,13 @@
             <img class="nav-logo" src="img/logo-auto.png" alt="logo">
         </div>
         <div class="nav-div-btn">
-            <a href="home">Lista de autos</a>
+            <a href="cars">Lista de autos</a>
             <a href="marks">Lista de marcas</a>
+            {* <a href="#admin-title">Administrador</a> *}
         </div>
         <div class="nav-div-logout">
             <p>Invitado</p>
-            <a href="#">Log out</a>
-            <a href="register">Register</a>
+            <a href="login">Iniciar sesión</a>
+            <a href="register">Registro</a>
         </div>
     </nav>

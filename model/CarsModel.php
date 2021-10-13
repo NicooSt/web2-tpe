@@ -7,25 +7,25 @@
         }
 
         function getCarsList() {
-            $request = $this->db->prepare('SELECT * FROM autos');
+            $request = $this->db->prepare('SELECT a.id_auto, a.modelo, a.origen, a.anio, b.marca FROM autos a LEFT JOIN marcas b ON a.id_marca = b.id_marca');
             $request->execute();
             return $request->fetchAll(PDO::FETCH_OBJ);
         }
 
         function getCar($id) {
-            $request = $this->db->prepare('SELECT * FROM autos WHERE id_auto = ?');
+            $request = $this->db->prepare('SELECT a.modelo, a.origen, a.anio, b.marca FROM autos a LEFT JOIN marcas b ON a.id_marca = b.id_marca WHERE a.id_auto = ?');
             $request->execute(array($id));
             return $request->fetch(PDO::FETCH_OBJ);
         }
         
-        function getMarks(){
+        function getMarksList() {
             $request = $this->db->prepare('SELECT * FROM marcas');
             $request->execute();
             return $request->fetchAll(PDO::FETCH_OBJ);
         }
 
         function getByMark($mark) {          
-            $request = $this->db->prepare('SELECT * FROM autos WHERE marca = ?');
+            $request = $this->db->prepare('SELECT a.modelo, a.origen, a.anio, b.marca FROM autos a LEFT JOIN marcas b ON a.id_marca = b.id_marca WHERE b.marca = ?');
             $request->execute(array($mark));
             return $request->fetchAll(PDO::FETCH_OBJ);
         }

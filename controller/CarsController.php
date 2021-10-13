@@ -11,9 +11,10 @@
             $this->view = new CarsView();
         }
 
-        function showHome() {
+        function showCars() {
             $cars = $this->model->getCarsList();
-            $this->view->showCars($cars);
+            $marksFilter = $this->model->getMarksList();
+            $this->view->showCarsList($cars, $marksFilter);
         }
 
         function showCar($id) {
@@ -22,18 +23,19 @@
         }
 
         function showMarks() {
-            $marks = $this->model->getMarks();
+            $marks = $this->model->getMarksList();
             $this->view->showMarksList($marks);
         }
 
         function filterByMark() {
-            if ($_POST['filter'] == 'Todos') {
-                $this->showHome();
+            if ($_POST['filter'] != 'Todos') {
+                $mark = $_POST['filter'];
+                $carsByMark = $this->model->getByMark($mark);
+                $marksFilter = $this->model->getMarksList();
+                $this->view->showCarsByMark($carsByMark, $mark, $marksFilter);
             }
             else {
-                $mark = $_POST['filter'];
-                $cars = $this->model->getByMark($mark);
-                $this->view->showCarsByMark($mark, $cars);
+                $this->showCars();
             }
         }
     }
