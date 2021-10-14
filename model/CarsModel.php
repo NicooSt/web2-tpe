@@ -25,7 +25,7 @@
         }
 
         function getByMark($mark) {          
-            $request = $this->db->prepare('SELECT a.modelo, a.origen, a.anio, b.marca FROM autos a LEFT JOIN marcas b ON a.id_marca = b.id_marca WHERE b.marca = ?');
+            $request = $this->db->prepare('SELECT a.id_auto, a.modelo, a.origen, a.anio, b.marca FROM autos a LEFT JOIN marcas b ON a.id_marca = b.id_marca WHERE b.marca = ?');
             $request->execute(array($mark));
             return $request->fetchAll(PDO::FETCH_OBJ);
         }

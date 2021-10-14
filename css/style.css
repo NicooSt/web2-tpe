@@ -17,14 +17,6 @@ nav {
 }
 
 /* Logo de pagina */
-.nav-logo {
-    width: 240px;
-    padding: 5px;
-    /* margin: 0 20px; */
-    background-color: whitesmoke;
-    border-radius: 5px;
-}
-
 .nav-div-logo {
     border-radius: 5px;
     margin-top: 5px;
@@ -32,8 +24,16 @@ nav {
     width: 30%;
 }
 
-/* Botones de navegador */
-.nav-div-btn {
+/* Contenedor logo de pagina */
+.nav-div-logo img {
+    width: 240px;
+    padding: 5px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+/* Contenedores botones de navegador */
+.nav-div-btn, .nav-div-logout {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,28 +41,7 @@ nav {
 }
 
 .nav-div-logout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 30%;
-}
-
-.nav-div-btn a, .nav-div-logout a {
-    font-size: 25px;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-    margin: 0 10px;
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: whitesmoke;
-}
-
-.nav-div-btn a:hover, .nav-div-logout a:hover {
-    color: whitesmoke;
-    border: 2px solid whitesmoke;
-    background-color: black;
 }
 
 /* Mensaje nombre de usuario */
@@ -73,41 +52,71 @@ nav {
     margin: 0 20px;
 }
 
+/* botones de navegador */
+.nav-div-btn a, .nav-div-logout a {
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px;
+    color: black;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.nav-div-btn a:hover, .nav-div-logout a:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 2px solid whitesmoke;
+}
+
 /* Mitad de pagina */
 section {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     margin-top: 50px;
 }
 
 /* Titulo de tabla */
 .list-title {
     font-size: 50px;
-    color: whitesmoke;
     text-align: center;
     text-decoration: underline;
     margin-bottom: 20px;
+    color: whitesmoke;
 }
 
 /* Formulario de filtro */
 #form-filter {
-    width: 55%;
+    width: 45%;
     display: flex;
     justify-content: flex-end;
 }
 
+/* Texto filtro */
 #form-filter label {
+    font-size: 18px;
     color: whitesmoke;
+}
+
+/* Select filtro */
+#form-filter select {
+    height: 20px;
+    padding: 2px 5px;
+    margin-left: 10px;
 }
 
 /* Boton filtro */
 #form-filter button {
-    color: black;
-    background-color: whitesmoke;
+    font-size: 15px;
+    height: 20px;
     margin-left: 10px;
     padding: 2px 5px;
+    color: black;
+    background-color: whitesmoke;
     border: 1px solid whitesmoke;
 }
 
@@ -119,8 +128,9 @@ section {
 
 /* Tabla */
 table {
-    text-align: center;
     font-size: 20px;
+    text-align: center;
+    text-transform: capitalize;
     margin-top: 10px;
     padding: 20px;
     background-color: whitesmoke;
@@ -140,23 +150,24 @@ table thead tr th, table tbody tr td {
 }
 
 /* Primera columna de tabla */
-table tbody tr td:first-child a {
-    color: black;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    line-height: 50px;
-    text-decoration: none;
-}
-
 /* Primera celda de cada fila de la primera columna */
 table tbody tr td:first-child {
-    float: left;
     position: relative;
+    float: left;
     overflow: hidden;
     line-height: 50px;
+}
+
+/* Elemento a de primera celda de cada fila */
+table tbody tr td:first-child a {
+    text-decoration: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    top: 0;
+    left: 0;
+    color: black;
 }
 
 table tbody tr td a:hover {
@@ -164,110 +175,107 @@ table tbody tr td a:hover {
     background-color: black;
 }
 
+/* Botones de celdas de ultima columna */
 table tbody tr td:last-child a {
     text-decoration: none;
-    border: 1px solid black;
+    margin: 0 3px;
+    padding: 3px;
     color: black;
     background-color: whitesmoke;
+    border: 1px solid black;
     border-radius: 5px;
-    padding: 3px;
-    margin: 0 3px;
 }
 
-table tbody tr td:last-child a:hover, .form-new-car button:hover {
+table tbody tr td:last-child a:hover {
     color: whitesmoke;
     background-color: black;
     border: 1px solid whitesmoke;
 }
 
-/* Pagina de administrador */
-.cont-admin {
-    color: whitesmoke;
-    display: flex;
-    flex-direction: column;
-}
-
-.cont-admin {
-    display: flex;
-    flex-direction: column;
-}
-
-.cont-admin section div:first-child {
-    display: flex;
-    justify-content: center;
-    /* margin-top: 20px; */
-}
-
-.cont-admin section div:last-child {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.cont-admin h1 {
-    font-size: 50px;
-    text-decoration: underline;
-}
-
-.cont-admin form {
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    /* width: 300px; */
-    width: 1200px;
-    /* height: 280px; */
-    height: 120px;
-    border: 2px solid whitesmoke;
-    border-radius: 10px;
-}
-
-.cont-admin h4 {
+/* Boton de agregar nuevo auto/marca */
+.btn-new {
     font-size: 25px;
-    /* margin: 10px 0; */
-    margin: 20px 0;
-}
-
-.cont-admin input, .cont-admin select {
-    font-size: 15px;
-    /* width: 200px; */
-    width: 180px;
-    /* height: 25px; */
-    height: 30px;
-    text-align: center;
-    /* margin: 5px; */
-    margin: 10px;
-}
-
-.cont-admin button {
-    width: 100px;
-    /* height: 20px; */
-    height: 30px;
-    /* margin-top: 5px; */
-    margin-left: 10px;
-    padding: 2px 0;
     font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    width: 45%;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px 0;
     color: black;
     background-color: whitesmoke;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
-.cont-admin button:hover {
+.btn-new:hover {
     color: whitesmoke;
     background-color: black;
     border: 2px solid whitesmoke;
 }
 
-/* .cont-admin p {
-    margin-top: 15px;
-} */
+/* Formularios de administrador */
+.cont-admin {
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+}
 
 .cont-admin p {
     font-size: 45px;
     font-weight: bold;
-    margin-top: 10px;
     text-decoration: underline;
+    margin-top: 10px;
+}
+
+.cont-admin form div:first-child {
+   margin: 15px;
+}
+
+.cont-admin form div:last-child {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.cont-admin form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+}
+
+.cont-admin input, .cont-admin select {
+    font-size: 15px;
+    text-align: center;
+    width: 180px;
+    height: 30px;
+    margin: 10px;
+}
+
+.cont-admin button, .cont-admin a {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+    padding: 2px 0;
+    color: black;
+    background-color: whitesmoke;
+    border: 2px solid black;
+}
+
+.cont-admin button:hover, .cont-admin a:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 2px solid whitesmoke;
+    cursor: pointer;
 }
 
 /* Titulo de descripcion */
@@ -283,8 +291,8 @@ table tbody tr td:last-child a:hover, .form-new-car button:hover {
 .desc-list ul li {
     font-size: 30px;
     text-align: center;
-    color: whitesmoke;
     margin-top: 5px;
+    color: whitesmoke;
 }
 
 .desc-list span {
@@ -298,14 +306,14 @@ table tbody tr td:last-child a:hover, .form-new-car button:hover {
     margin-top: 30px;
 }
 
+/* link 'volver' */
 .div-link a {
-    color: black;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 5px;
-    border: 1px solid black;
-    background-color: whitesmoke;
     font-weight: bold;
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
 }
 
 .div-link a:hover {
@@ -322,35 +330,34 @@ table tbody tr td:last-child a:hover, .form-new-car button:hover {
 
 .form-register {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 280px;
-    height: 400px;
     max-width: 460px;
+    height: 400px;
+    margin-top: 280px;
     border: 2px solid whitesmoke;
 }
 
 .form-register p:first-child {
-    color: whitesmoke;
     font-size: 40px;
     font-weight: bold;
     text-align: center;
     width: 300px;
-    margin-bottom: 30px;
     margin: 0 80px 30px 80px;
+    color: whitesmoke;
 }
 
 .form-register input {
-    color: whitesmoke;
-    text-align: center;
     font-size: 20px;
+    text-align: center;
     width: 300px;
     height: 40px;
     margin: 10px 0;
+    color: whitesmoke;
+    background-color: transparent;
     border: 2px solid whitesmoke;
     border-radius: 8px;
-    background-color: transparent;
     transition: 0.25s;
 }
 
@@ -367,12 +374,15 @@ table tbody tr td:last-child a:hover, .form-new-car button:hover {
     border: 2px solid black;
 }
 
-.form-register p:last-child,
-.form-register p:last-child a {
+.register-message,
+.register-message a {
     color: whitesmoke;
 }
 
-/* Mostrar / Ocultar boton */
-/* .nav-div-btn a:last-child {
-    display: none;
-} */
+.register-alert {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    color: rgb(255, 187, 0);
+}

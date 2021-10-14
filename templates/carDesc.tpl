@@ -9,6 +9,6 @@
     </ul>
 </div>
 <div class="div-link">
-    <a href="cars">Volver</a>
+    <a href="cars">VOLVER</a>
 </div>
 {include file='templates/footer.tpl'}

@@ -6,25 +6,13 @@
             $this->db = new PDO('mysql:host=localhost;dbname=db_cars;charset=utf8', 'root', '');
         }
 
-        // function getCarsList() {
-        //     $request = $this->db->prepare('SELECT * FROM autos');
-        //     $request->execute();
-        //     return $request->fetchAll(PDO::FETCH_OBJ);
-        // }
-
-        // function getMarksList() {
-        //     $request = $this->db->prepare('SELECT * FROM marcas');
-        //     $request->execute();
-        //     return $request->fetchAll(PDO::FETCH_OBJ);
-        // }
-
-        function checkCar($modelo) {
-            $request = $this->db->prepare('SELECT * FROM autos WHERE modelo = ?');
-            $request->execute(array($modelo));
-            return $request->fetch(PDO::FETCH_OBJ);
+        function getMarksList() {
+            $request = $this->db->prepare('SELECT * FROM marcas');
+            $request->execute();
+            return $request->fetchAll(PDO::FETCH_OBJ);
         }
 
-        function addCarToDB($modelo, $origen, $anio, $marca) {
+        function addCarToDB($modelo, $marca, $origen, $anio) {
             $requestIdMark = $this->db->prepare('SELECT id_marca FROM marcas WHERE marca = ?');
             $requestIdMark->execute(array($marca));
             $idMark = $requestIdMark->fetch(PDO::FETCH_OBJ);
@@ -32,18 +20,18 @@
             $request->execute(array($modelo, $origen, $anio, $idMark->id_marca));
         }
 
-        function editCarFromDB($modelo, $modeloNuevo, $origen, $anio, $marca) {
-            // Consigo el id del auto que coincide con el modelo
-            $requestIdCar = $this->db->prepare('SELECT id_auto FROM autos WHERE modelo = ?');
-            $requestIdCar->execute(array($modelo));
-            $idCar = $requestIdCar->fetch(PDO::FETCH_OBJ);
-            // Consigo el id de la marca nueva
-            $requestIdMark = $this->db->prepare('SELECT id_marca FROM marcas WHERE marca = ?');
-            $requestIdMark->execute(array($marca));
+        function getCar($id){
+            $request = $this->db->prepare('SELECT uno.modelo, dos.marca FROM autos uno LEFT JOIN marcas dos ON uno.id_marca = dos.id_marca WHERE uno.id_auto = ?');
+            $request->execute(array($id));
+            return $request->fetch(PDO::FETCH_OBJ);
+        }
+
+        function editCarFromDB($modelo, $marca, $origen, $anio, $idCar) {
+            $requestIdMark =  $this->db->prepare('SELECT id_marca FROM marcas WHERE marca = ?');
+            $requestIdMark-> execute(array($marca));
             $idMark = $requestIdMark->fetch(PDO::FETCH_OBJ);
-            // Edito el auto correspondiente con la info obtenida
-            $request = $this->db->prepare('UPDATE autos SET modelo = ?, origen = ?, anio = ?, id_marca = ? WHERE autos.id_auto = ?');
-            $request->execute(array($modeloNuevo, $origen, $anio, $idMark->id_marca, $idCar->id_auto));
+            $request = $this->db->prepare('UPDATE autos SET modelo = ?, origen = ?, anio = ?, id_marca = ? WHERE id_auto = ?');
+            $request-> execute(array($modelo, $origen, $anio, $idMark->id_marca, $idCar));
         }
 
         function deleteCarFromDB($id) {
@@ -57,19 +45,20 @@
             return $request->fetch(PDO::FETCH_OBJ);
         }
 
-        function addMarkToDB($marca, $origen, $fundacion) {
+        function addMarkToDB($marcaNueva, $origen, $fundacion) {
             $request = $this->db->prepare('INSERT INTO marcas (marca, origen, fundacion)' . 'VALUES (?, ?, ?)');
-            $request->execute(array($marca, $origen, $fundacion));
+            $request->execute(array($marcaNueva, $origen, $fundacion));
         }
 
-        function editMarkFromDB($marca, $marcaNueva, $origen, $fundacion) {
-            // Consigo id de la marca que coincide con la marca anterior
-            $requestIdMark = $this->db->prepare('SELECT id_marca FROM marcas WHERE marca = ?');
-            $requestIdMark->execute(array($marca));
-            $idMark = $requestIdMark->fetch(PDO::FETCH_OBJ);
-            // Edito la marca con los nuevos datos
-            $request = $this->db->prepare('UPDATE marcas SET marca = ?, origen = ?, fundacion = ? WHERE marcas.id_marca = ?');
-            $request->execute(array($marcaNueva, $origen, $fundacion, $idMark->id_marca));
+        function getMark($id) {
+            $request = $this->db->prepare('SELECT marca FROM marcas WHERE id_marca = ?');
+            $request->execute(array($id));
+            return $request->fetch(PDO::FETCH_OBJ);
+        }
+
+        function editMarkFromDB($id, $marcaNueva, $origen, $fundacion){
+            $request = $this->db->prepare('UPDATE marcas SET marca = ?, origen = ?, fundacion = ? WHERE id_marca = ?');
+            $request->execute(array( $marcaNueva, $origen, $fundacion, $id));
         }
 
         function deleteMarkFromDB($id) {

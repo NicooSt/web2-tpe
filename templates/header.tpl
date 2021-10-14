@@ -16,16 +16,16 @@
 <body>
     <nav>
         <div class="nav-div-logo">
-            <img class="nav-logo" src="img/logo-auto.png" alt="logo">
+            <img src="img/logo-auto.png" alt="logo">
         </div>
         <div class="nav-div-btn">
             <a href="cars">Lista de autos</a>
             <a href="marks">Lista de marcas</a>
-            {* <a href="#admin-title">Administrador</a> *}
         </div>
         <div class="nav-div-logout">
-            <p>Invitado</p>
-            <a href="login">Iniciar sesión</a>
-            <a href="register">Registro</a>
+            <p>{if $userLogged != 'Invitado'}{$userLogged}{else}Invitado{/if}</p>
+            {if $userLogged == 'Invitado'}<a href="login">Iniciar sesión</a>{/if}
+            {if $userLogged != 'Invitado'}<a href="logout">Cerrar sesion</a>{/if}
+            {if $userLogged == 'Invitado'}<a href="register">Registro</a>{/if}          
         </div>
     </nav>

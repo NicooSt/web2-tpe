@@ -14,7 +14,7 @@
             $this->view->showRegister();
         }
 
-        function userLogin() {
-            $this->view->showLogin();
-        }
+        // function userLogin() {
+        //     $this->view->showLogin();
+        // }
     }

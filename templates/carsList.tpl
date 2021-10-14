@@ -10,7 +10,7 @@
                 {/foreach}
             </select>
         </label>
-        <button type="submit">Filtrar</button>
+        <button type="submit">FILTRAR</button>
     </form>
     <table>
         <thead>
@@ -19,7 +19,7 @@
                 <th>Marca</th>
                 <th>Origen</th>
                 <th>Año</th>
-                <th>Eliminar</th>
+                {if $userLogged != 'Invitado'}<th>Eliminar / Editar</th>{/if}
             </tr>
         </thead>
         <tbody>
@@ -29,12 +29,11 @@
                     <td>{$car->marca}</td>
                     <td>{$car->origen}</td>
                     <td>{$car->anio}</td>
-                    <td><a href="deleteCar/{$car->id_auto}">Eliminar</a></td>                   
+                    {if $userLogged != 'Invitado'}<td><a href="deleteCar/{$car->id_auto}">Eliminar</a> <a href="showEditCar/{$car->id_auto}">Editar</a></td>{/if}                                 
                 </tr>
             {/foreach}
         </tbody>
     </table>
+    {if $userLogged != 'Invitado'}<a class="btn-new" href="showAddCar">AGREGAR NUEVO AUTO</a>{/if}
 </section>
-{include file='templates/addCar.tpl'}
-{include file='templates/editCar.tpl'}
 {include file='templates/footer.tpl'}
