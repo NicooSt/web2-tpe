@@ -23,9 +23,9 @@
             <a href="marks">Lista de marcas</a>
         </div>
         <div class="nav-div-logout">
-            <p>{if $userLogged != 'Invitado'}{$userLogged}{else}Invitado{/if}</p>
-            {if $userLogged == 'Invitado'}<a href="login">Iniciar sesión</a>{/if}
-            {if $userLogged != 'Invitado'}<a href="logout">Cerrar sesion</a>{/if}
-            {if $userLogged == 'Invitado'}<a href="register">Registro</a>{/if}          
+            <p>{if $userLogged != 'INVITADO'}{$userLogged}{else}INVITADO{/if}</p>
+            {if $userLogged == 'INVITADO'}<a href="login">Iniciar sesión</a>{/if}
+            {if $userLogged != 'INVITADO'}<a href="logout">Cerrar sesion</a>{/if}
+            {if $userLogged == 'INVITADO'}<a href="register">Registro</a>{/if}          
         </div>
     </nav>

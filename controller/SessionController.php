@@ -30,7 +30,7 @@
 
         function verifyLogin() {
             if (!empty($_POST['user']) && !empty($_POST['password'])) {
-                $user = $_POST['user'];
+                $user = strtoupper($_POST['user']);
                 $pass = $_POST['password'];
                 $getUser = $this->model->getUser($user);
                 if ($getUser && password_verify($pass, $getUser->password)) {
@@ -49,7 +49,7 @@
 
         function invitado() {
             session_start();
-            $_SESSION['user'] = 'Invitado';
+            $_SESSION['user'] = 'INVITADO';
             $this->view->showCarsLocation();
         }
     }
