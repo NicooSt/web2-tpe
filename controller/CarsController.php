@@ -34,8 +34,8 @@
         }
 
         function filterByMark() {
-            $this->authHelper->checkLoggedIn();
             if ($_POST['filter'] != 'Todos') {
+                $this->authHelper->checkLoggedIn();
                 $mark = $_POST['filter'];
                 $carsByMark = $this->model->getByMark($mark);
                 $marksFilter = $this->model->getMarksList();
