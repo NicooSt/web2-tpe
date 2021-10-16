@@ -16,7 +16,7 @@
         <form class="form-register" action="verify/login" method="POST">
             <p>Iniciar sesión</p>
             <input type="text" name="user" placeholder="usuario" required>
-            <input type="password" name="password" placeholder="contraseña" required>
+            <input type="password" name="password" placeholder="contraseña" minlength="4" required>
             <button type="submit">Iniciar</button>
             <p class="register-message">Aun no tenes cuenta, <a href="register">registrate</a> o ingresa como <a href="invitado">invitado</a>.</p>
             <p class="register-alert">{if !$alert == ''}{$alert}{else}{/if}</p>

@@ -16,7 +16,7 @@
         }
 
         function verifyRegister() {
-            if ($_POST['user'] != 'INVITADO') {
+            if (strtoupper($_POST['user']) != 'INVITADO') {
                 if (!empty($_POST['user']) && !empty($_POST['password'])) {
                     $user = strtoupper($_POST['user']);
                     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
@@ -26,7 +26,7 @@
                         $this->view->showRegister('Cuenta Creada con exito!');
                     }
                     else {
-                        $this->view->showRegister('La cuenta ya existe');
+                        $this->view->showRegister('El usuario ya existe');
                     }
                 }
                 else {
