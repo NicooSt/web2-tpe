@@ -20,7 +20,7 @@
             $request->execute(array($modelo, $origen, $anio, $idMark->id_marca));
         }
 
-        function getCar($id){
+        function getCar($id) {
             $request = $this->db->prepare('SELECT uno.modelo, dos.marca FROM autos uno LEFT JOIN marcas dos ON uno.id_marca = dos.id_marca WHERE uno.id_auto = ?');
             $request->execute(array($id));
             return $request->fetch(PDO::FETCH_OBJ);
@@ -56,7 +56,7 @@
             return $request->fetch(PDO::FETCH_OBJ);
         }
 
-        function editMarkFromDB($id, $marcaNueva, $origen, $fundacion){
+        function editMarkFromDB($id, $marcaNueva, $origen, $fundacion) {
             $request = $this->db->prepare('UPDATE marcas SET marca = ?, origen = ?, fundacion = ? WHERE id_marca = ?');
             $request->execute(array( $marcaNueva, $origen, $fundacion, $id));
         }

@@ -8,7 +8,7 @@
             $this->smarty = new Smarty();
         }
 
-        function showAddCarPage($marks){
+        function showAddCarPage($marks) {
             $this->smarty->assign('tab', 'Agregar auto');
             $this->smarty->assign('mark', '');
             $this->smarty->assign('marks', $marks);
@@ -16,7 +16,7 @@
             $this->smarty->display('templates/addCar.tpl');
         }
 
-        function showEditCarPage($id, $marks, $car){
+        function showEditCarPage($id, $marks, $car) {
             $this->smarty->assign('car', $car);
             $this->smarty->assign('marks', $marks);
             $this->smarty->assign('tab', 'Editar auto');
@@ -26,14 +26,14 @@
             $this->smarty->display('templates/editCar.tpl');           
         }
         
-        function showAddMarkPage(){
+        function showAddMarkPage() {
             $this->smarty->assign('tab', 'Agregar marca');
             $this->smarty->assign('mark', '');
             $this->smarty->assign('userLogged', $_SESSION['user']);
             $this->smarty->display('templates/addMark.tpl');
         }
         
-        function showEditMarkPage($id, $marks, $markTitle){
+        function showEditMarkPage($id, $marks, $markTitle) {
             $this->smarty->assign('id', $id);
             $this->smarty->assign('marks', $marks);
             $this->smarty->assign('markTitle', $markTitle);

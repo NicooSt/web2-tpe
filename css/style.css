@@ -132,6 +132,7 @@ table {
     text-align: center;
     text-transform: capitalize;
     margin-top: 10px;
+    margin-bottom: 20px;
     padding: 20px;
     background-color: whitesmoke;
     border: 2px solid black;
@@ -201,7 +202,7 @@ table tbody tr td:last-child a:hover {
     width: 45%;
     height: 40px;
     line-height: 40px;
-    margin: 20px 0;
+    margin-bottom: 20px;
     color: black;
     background-color: whitesmoke;
     border: 2px solid black;
@@ -322,7 +323,7 @@ table tbody tr td:last-child a:hover {
     border: 1px solid whitesmoke;
 }
 
-/* Form de Registro */
+/* Form de Registro y de inicio de sesion*/
 .div-form-register {
     display: flex;
     justify-content: center;
@@ -339,6 +340,7 @@ table tbody tr td:last-child a:hover {
     border: 2px solid whitesmoke;
 }
 
+/* Titulos de registro y de inicio de sesion */
 .form-register p:first-child {
     font-size: 40px;
     font-weight: bold;
@@ -348,6 +350,7 @@ table tbody tr td:last-child a:hover {
     color: whitesmoke;
 }
 
+/* Inputs user y pass */
 .form-register input {
     font-size: 20px;
     text-align: center;
@@ -374,11 +377,19 @@ table tbody tr td:last-child a:hover {
     border: 2px solid black;
 }
 
+.form-register button:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 2px solid whitesmoke;
+}
+
+/* Mensaje con links e invitado */
 .register-message,
 .register-message a {
     color: whitesmoke;
 }
 
+/* Mensaje de aviso cuenta creada, incorrecto, etc. */
 .register-alert {
     font-size: 20px;
     font-weight: bold;

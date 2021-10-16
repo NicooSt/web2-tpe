@@ -1,6 +1,5 @@
 <?php
     require_once 'controller/CarsController.php';
-    // require_once 'controller/UserController.php';
     require_once 'controller/AdminController.php';
     require_once 'controller/SessionController.php';
     require_once 'controller/RegisterController.php';
@@ -81,6 +80,7 @@
             break;
         case 'invitado':
             $sessionController->invitado();
+            break;
         default:
             echo 'Error';
             break;       
