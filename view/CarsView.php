@@ -15,14 +15,17 @@
             $this->smarty->assign('cars', $cars);
             $this->smarty->assign('marksFilter', $marksFilter);
             $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/carsList.tpl');
         }
-        
-        function showCarDesc($car) {
+
+        function showCarDesc($car, $idCar) {
             $this->smarty->assign('mark', '');
             $this->smarty->assign('tab', $car->marca . ' ' . $car->modelo);
             $this->smarty->assign('car', $car);
+            $this->smarty->assign('idCar', $idCar);
             $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/carDesc.tpl');           
         }
         
@@ -32,6 +35,7 @@
             $this->smarty->assign('title', 'marcas');
             $this->smarty->assign('marks', $marks);
             $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/marksList.tpl');
         }
         
@@ -41,6 +45,7 @@
             $this->smarty->assign('cars', $carsByMark);
             $this->smarty->assign('marksFilter', $marksFilter);
             $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/carsList.tpl');
         }
     }

@@ -23,9 +23,8 @@
             <a href="marks">Lista de marcas</a>
         </div>
         <div class="nav-div-logout">
-            <p>{if $userLogged != 'INVITADO'}{$userLogged}{else}INVITADO{/if}</p>
-            {if $userLogged == 'INVITADO'}<a href="login">Iniciar sesión</a>{/if}
-            {if $userLogged != 'INVITADO'}<a href="logout">Cerrar sesion</a>{/if}
-            {if $userLogged == 'INVITADO'}<a href="register">Registro</a>{/if}          
+            <p id="usuario">{$userLogged}</p>
+            <a href="logout">Cerrar sesion</a>
+            {if $rol == 'admin'}<a href="admin">Admin</a>{else}{/if}
         </div>
     </nav>

@@ -9,8 +9,10 @@
             <input placeholder="Año" type="number" name="fundacion" min="1800" max="9999" required>
         </div>
         <div>
-            <button type="submit">Confirmar</button>
-            <a href="marks">Cancelar</a>
+            <div class="div-admin-btn">
+                <button type="submit">Confirmar</button>
+                <a href="marks">Cancelar</a>
+            </div>
         </div>
     </form>
 </section>

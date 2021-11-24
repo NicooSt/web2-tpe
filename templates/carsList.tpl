@@ -19,7 +19,7 @@
                 <th>Marca</th>
                 <th>Origen</th>
                 <th>Año</th>
-                {if $userLogged != 'INVITADO'}<th>Eliminar / Editar</th>{/if}
+                {if $rol == 'admin'}<th>Eliminar / Editar</th>{/if}
             </tr>
         </thead>
         <tbody>
@@ -29,11 +29,11 @@
                     <td>{$car->marca}</td>
                     <td>{$car->origen}</td>
                     <td>{$car->anio}</td>
-                    {if $userLogged != 'INVITADO'}<td><a href="deleteCar/{$car->id_auto}">Eliminar</a> <a href="showEditCar/{$car->id_auto}">Editar</a></td>{/if}                                 
+                    {if $rol == 'admin'}<td><a href="deleteCar/{$car->id_auto}">Eliminar</a> <a href="showEditCar/{$car->id_auto}">Editar</a></td>{/if}                                 
                 </tr>
             {/foreach}
         </tbody>
     </table>
-    {if $userLogged != 'INVITADO'}<a class="btn-new" href="showAddCar">AGREGAR NUEVO AUTO</a>{/if}
+    {if $rol == 'admin'}<a class="btn-new" href="showAddCar">AGREGAR NUEVO AUTO</a>{/if}
 </section>
 {include file='templates/footer.tpl'}

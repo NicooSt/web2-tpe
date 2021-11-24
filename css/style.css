@@ -1,4 +1,4 @@
-* {
+    * {
     font-family: 'Rubik', sans-serif;
     margin: 0;
     padding: 0;
@@ -218,25 +218,39 @@ table tbody tr td:last-child a:hover {
 .cont-admin {
     display: flex;
     flex-direction: column;
+    align-items: center;
     color: whitesmoke;
+    width: 100vw;
+    height: 60vh;
 }
 
 .cont-admin p {
     font-size: 45px;
     font-weight: bold;
     text-decoration: underline;
-    margin-top: 10px;
+}
+
+.cont-admin form .p-admin {
+    font-size: 20px;
+    text-decoration: none;
+    margin: 0 20px;
 }
 
 .cont-admin form div:first-child {
-   margin: 15px;
+   margin: 10px;
+   display: flex;
 }
 
 .cont-admin form div:last-child {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
     width: 100%;
+}
+
+.cont-admin form div .div-admin-btn {
+    flex-direction: row;
 }
 
 .cont-admin form {
@@ -247,6 +261,7 @@ table tbody tr td:last-child a:hover {
     margin: 30px;
     border: 2px solid whitesmoke;
     border-radius: 10px;
+    min-width: 735px;
 }
 
 .cont-admin input, .cont-admin select {
@@ -279,6 +294,16 @@ table tbody tr td:last-child a:hover {
     cursor: pointer;
 }
 
+.cont-admin form div:last-child .admin-message {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: rgb(255, 187, 0);
+    text-decoration: none;
+}
+
 /* Titulo de descripcion */
 .desc-title {
     font-size: 70px;
@@ -298,6 +323,144 @@ table tbody tr td:last-child a:hover {
 
 .desc-list span {
     margin-left: 20px;
+}
+
+/* Comentarios */
+.container-comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 75px;
+    width: 100%;
+}
+
+.container-comment > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+}
+
+.title-comment {
+    align-self: flex-start;
+}
+
+.title-comment p {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 25px;
+    color: whitesmoke;
+}
+
+#form-comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#form-comments div:first-child {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#form-comments div:last-child {
+    width: 100%;
+    display: flex;
+}
+
+.container-score {
+    width: 100%;
+    justify-content: center;
+}
+
+.container-score p {
+    font-size: 25px;
+    color: whitesmoke;
+}
+
+.container-score input {
+    color: whitesmoke;
+    margin-left: 20px;
+}
+
+.container-btn-addComment {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.container-btn-addComment button {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    width: 100px;
+    height: 25px;
+    margin-right: 25px;
+    background-color: whitesmoke;
+}
+
+.container-btn-addComment button:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 2px solid whitesmoke;
+    font-weight: bold;
+}
+
+#form-comments textarea {
+    font-size: 20px;
+    width: 700px;
+    height: 100px;
+    resize: none;
+    padding: 10px;
+}
+
+/* Comentarios agregados */
+.box-comment {
+    font-size: 20px;
+    width: 700px;  
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: whitesmoke;
+    background-color: rgb(20, 20, 20);
+    border-radius: 3px;
+}
+
+.box-comment div:first-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-comment div:last-child {
+    font-size: 18px;
+}
+
+.comment {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.box-btnDelete-score {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+}
+
+.box-btnDelete-score button {
+    width: 50px;
+}
+
+.box-btnDelete-score button:hover {
+    color: whitesmoke;
+    background-color: rgb(20, 20, 20);
+    border: 1px solid whitesmoke;
+}
+
+/* Puntaje */
+#score {
+    color: whitesmoke;
 }
 
 /* Contenedor de link 'volver' */
@@ -327,6 +490,9 @@ table tbody tr td:last-child a:hover {
 .div-form-register {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 .form-register {
@@ -336,7 +502,6 @@ table tbody tr td:last-child a:hover {
     align-items: center;
     max-width: 460px;
     height: 400px;
-    margin-top: 280px;
     border: 2px solid whitesmoke;
 }
 

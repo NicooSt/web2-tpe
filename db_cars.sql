@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2021 a las 01:32:34
+-- Tiempo de generación: 24-11-2021 a las 02:03:10
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -50,7 +50,24 @@ INSERT INTO `autos` (`id_auto`, `modelo`, `origen`, `anio`, `id_marca`) VALUES
 (9, 'Tipo 1', 'Alemania', 1938, 10),
 (10, 'Uno', 'Italia', 1983, 3),
 (11, 'Impala', 'Estados Unidos', 1970, 1),
-(12, 'Montero', 'Japón', 1982, 12);
+(12, 'Montero', 'Japón', 1982, 12),
+(13, '600', 'Italia', 1955, 3),
+(14, 'E3', 'Alemania', 1968, 15),
+(15, 'Falcon', 'Argentina', 1962, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `contenido` varchar(200) NOT NULL,
+  `puntaje` int(11) NOT NULL,
+  `user` varchar(45) NOT NULL,
+  `id_auto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -80,7 +97,8 @@ INSERT INTO `marcas` (`id_marca`, `marca`, `origen`, `fundacion`) VALUES
 (8, 'Renault', 'Francia', 1898),
 (9, 'Toyota', 'Japón', 1933),
 (10, 'Volkswagen', 'Alemania', 1937),
-(12, 'Mitsubishi', 'Japón', 1970);
+(12, 'Mitsubishi', 'Japón', 1970),
+(15, 'BMW', 'Alemania', 1916);
 
 -- --------------------------------------------------------
 
@@ -90,15 +108,17 @@ INSERT INTO `marcas` (`id_marca`, `marca`, `origen`, `fundacion`) VALUES
 
 CREATE TABLE `users` (
   `user` varchar(45) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `rol` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`user`, `password`) VALUES
-('valen', '$2y$10$sxzZB8FciWRLAo2HccrkkuUJEHyO3HG/rI9t5wORBV/xd2NF8CWny');
+INSERT INTO `users` (`user`, `password`, `rol`) VALUES
+('NICO', '$2y$10$AMjoj54peeqivrBmmvLOp.Z3ydbrQQ6dksyhiW1Z8cuHsRy0M8Mca', 'admin'),
+('VALEN', '$2y$10$2sHCp3XYsfhY/HF7CDLye.BBSiIY5wQ.k48iBQU1r82fAgQbqXzvm', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -110,6 +130,14 @@ INSERT INTO `users` (`user`, `password`) VALUES
 ALTER TABLE `autos`
   ADD PRIMARY KEY (`id_auto`),
   ADD KEY `id_marca` (`id_marca`);
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `user` (`user`),
+  ADD KEY `id_auto` (`id_auto`);
 
 --
 -- Indices de la tabla `marcas`
@@ -131,13 +159,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `autos`
 --
 ALTER TABLE `autos`
-  MODIFY `id_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
@@ -148,6 +182,13 @@ ALTER TABLE `marcas`
 --
 ALTER TABLE `autos`
   ADD CONSTRAINT `autos_ibfk_1` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id_marca`);
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`user`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_auto`) REFERENCES `autos` (`id_auto`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

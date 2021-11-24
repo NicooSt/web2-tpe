@@ -13,6 +13,7 @@
             $this->smarty->assign('mark', '');
             $this->smarty->assign('marks', $marks);
             $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/addCar.tpl');
         }
 
@@ -23,6 +24,7 @@
             $this->smarty->assign('mark', '');
             $this->smarty->assign('id', $id);
             $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/editCar.tpl');           
         }
         
@@ -30,6 +32,7 @@
             $this->smarty->assign('tab', 'Agregar marca');
             $this->smarty->assign('mark', '');
             $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/addMark.tpl');
         }
         
@@ -40,7 +43,19 @@
             $this->smarty->assign('tab', 'Editar marca');
             $this->smarty->assign('mark', '');
             $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/editMark.tpl');
+        }
+
+        function showAdminPage($users, $messageRol, $messageDelete) {
+            $this->smarty->assign('users', $users);
+            $this->smarty->assign('tab', 'Administración');
+            $this->smarty->assign('mark', '');
+            $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
+            $this->smarty->assign('messageRol', $messageRol);
+            $this->smarty->assign('messageDelete', $messageDelete);
+            $this->smarty->display('templates/adminPage.tpl');
         }
 
         function showCarsLoc() {
@@ -50,4 +65,5 @@
         function showMarksLoc() {
             header("Location: " . BASE_URL . "marks");     
         }
+
     }

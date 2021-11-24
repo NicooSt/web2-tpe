@@ -7,7 +7,7 @@
                 <th>Marca</th>
                 <th>Origen</th>
                 <th>Año de Fundación</th>
-                {if $userLogged != 'INVITADO'}<th>Eliminar / Editar</th>{/if}
+                {if $rol == 'admin'}<th>Eliminar / Editar</th>{/if}
             </tr>
         </thead>
         <tbody>
@@ -16,11 +16,11 @@
                     <td>{$mark->marca}</td>
                     <td>{$mark->origen}</td>
                     <td>{$mark->fundacion}</td>                
-                    {if $userLogged != 'INVITADO'}<td><a href="deleteMark/{$mark->id_marca}">Eliminar</a> <a href="showEditMark/{$mark->id_marca}">Editar</a></td>{/if}
+                    {if $rol == 'admin'}<td><a href="deleteMark/{$mark->id_marca}">Eliminar</a> <a href="showEditMark/{$mark->id_marca}">Editar</a></td>{/if}
                 </tr>
             {/foreach}
         </tbody>
     </table>
-    {if $userLogged != 'INVITADO'}<a class="btn-new" href="showAddMark">AGREGAR NUEVA MARCA</a>{/if}
+    {if $rol == 'admin'}<a class="btn-new" href="showAddMark">AGREGAR NUEVA MARCA</a>{/if}
 </section>
 {include file="templates/footer.tpl"}

@@ -13,12 +13,12 @@
 </head>
 <body>
     <div class="div-form-register">
-        <form class="form-register" action="verify/register" method="POST">
+        <form class="form-register" action="verifyRegister" method="POST">
             <p>Registro</p>
             <input type="text" name="user" placeholder="usuario" required>
             <input type="password" name="password" placeholder="contraseña" minlength="4" required>
             <button type="submit">Confirmar</button>
-            <p class="register-message">Ingresar como <a href="invitado">invitado</a> o <a href="login">inicia sesión</a>.</p>
+            <p class="register-message">Ya tenes cuenta? <a href="login">inicia sesión</a>.</p>
             <p class="register-alert">{if !$alert == ''}{$alert}{else}{/if}</p>
         </form>
     </div>

@@ -65,4 +65,20 @@
             $request = $this->db->prepare('DELETE FROM marcas WHERE id_marca = ?');
             $request->execute(array($id));
         }
+
+        function getUsers() {
+            $request = $this->db->prepare('SELECT * FROM users');
+            $request->execute();
+            return $request->fetchAll(PDO::FETCH_OBJ);
+        }
+
+        function editUser($userName, $userRol) {
+            $request = $this->db->prepare('UPDATE users SET rol = ? WHERE user = ?');
+            $request->execute(array($userRol, $userName));
+        }
+
+        function deleteUserFromDB($userName) {
+            $request = $this->db->prepare('DELETE FROM users WHERE user = ?');
+            $request->execute(array($userName));
+        }
     }

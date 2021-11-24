@@ -12,44 +12,49 @@
         }
 
         function userLogin() {
-            $message = '';
-            $this->userLogout($message);
-            $this->view->showLogin();
+            $this->view->showLogin('');
         }
 
-        function userLogout($message = ''){
+        function userLogout() {
             session_start();
             session_destroy();
-            if ($message == '') {
-                $this->view->showLogin($message);
-            }
-            else {
-                $this->view->showLogin('Sesion cerrada!');
-            }
+            $this->view->showLogin('Sesión cerrada!');
         }
 
         function verifyLogin() {
             if (!empty($_POST['user']) && !empty($_POST['password'])) {
-                $user = strtoupper($_POST['user']);
-                $pass = $_POST['password'];
-                $getUser = $this->model->getUser($user);
-                if ($getUser && password_verify($pass, $getUser->password)) {
-                    session_start();
-                    $_SESSION['user'] = $user;
-                    $this->view->showCarsLocation();
-                }
-                else {
-                    $this->view->showLogin('Usuario o contraseña incorrecto');
-                } 
+                $this->verify($_POST['user'], $_POST['password']); 
             }
             else {
                 $this->view->showLogin('Complete todos los campos');
             }
         }
 
-        function invitado() {
-            session_start();
-            $_SESSION['user'] = 'INVITADO';
-            $this->view->showCarsLocation();
+        function verifyRegisterLogin($userNewReg, $passNewReg) {
+            if ($userNewReg != null && $passNewReg != null) {
+                $this->verify($userNewReg, $passNewReg); 
+            }
+            else {
+                $this->view->showLogin('Complete todos los campos');
+            }
+        }
+
+        function verify($userParam, $passParam) {
+            $user = strtoupper($userParam);
+            $pass = $passParam;
+            $getUser = $this->model->getUser($user);
+            if ($getUser && password_verify($pass, $getUser->password)) {
+                session_start();
+                $_SESSION['user'] = $user;
+                if ($getUser->rol == "admin") {
+                    $_SESSION['rol'] = $getUser->rol;
+                } else if ($getUser->rol == "user") {
+                    $_SESSION['rol'] = $getUser->rol;
+                }
+                $this->view->showCarsLocation();
+            }
+            else {
+                $this->view->showLogin('Usuario o contraseña incorrecto');
+            } 
         }
     }

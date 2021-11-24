@@ -3,7 +3,7 @@
     require_once 'controller/AdminController.php';
     require_once 'controller/SessionController.php';
     require_once 'controller/RegisterController.php';
-    define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+    define('BASE_URL', '//'. $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
     if (!empty($_GET['action'])) {
         $action = $_GET['action'];
@@ -61,6 +61,15 @@
         case 'deleteMark':
             $adminController->deleteMark($params[1]);
             break;
+        case 'admin':
+            $adminController->showAdmin();
+            break;
+        case 'assignRol':
+            $adminController->assignRol();
+            break;
+        case 'deleteUser':
+            $adminController->deleteUser();
+            break;
         case 'register':
             $registerController->userRegister();
             break;
@@ -70,16 +79,11 @@
         case 'logout':
             $sessionController->userLogout();
             break;
-        case 'verify':
-            if ($params[1] == 'register') {
-                $registerController->verifyRegister();
-            }
-            if ($params[1] == 'login') {
-                $sessionController->verifyLogin();
-            }
+        case 'verifyRegister':
+            $registerController->verifyRegister();
             break;
-        case 'invitado':
-            $sessionController->invitado();
+        case 'verifyLogin':
+            $sessionController->verifyLogin();
             break;
         default:
             echo 'Error';

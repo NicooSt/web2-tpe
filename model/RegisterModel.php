@@ -12,8 +12,8 @@
             return $request->fetch(PDO::FETCH_OBJ);
         }
 
-        function addUser($user, $password) {
-            $request = $this->db->prepare('INSERT INTO users(user, password)' . 'VALUES(?, ?)');
-            $request->execute(array($user, $password));
+        function addUser($user, $password, $rol) {
+            $request = $this->db->prepare('INSERT INTO users(user, password, rol)' . 'VALUES(?, ?, ?)');
+            $request->execute(array($user, $password, $rol));
         }
     }

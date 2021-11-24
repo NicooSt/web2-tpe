@@ -105,4 +105,41 @@
             $this->model->deleteMarkFromDB($id);
             $this->view->showMarksLoc();
         }
+        
+        function showAdmin() {
+            $this->authHelper->checkLoggedIn();
+            $users = $this->model->getUsers();
+            $this->view->showAdminPage($users, '', '');
+        }
+
+        function assignRol() {
+            $this->authHelper->checkLoggedIn();
+            $users = $this->model->getUsers();
+            if ($_POST['user'] != 'Seleccione' && $_POST['userRol'] != 'Seleccione') {
+                $userName = $_POST['user'];
+                $userRol = $_POST['userRol'];
+                if ($userRol == 'Administrador') {
+                    $userRol = 'admin';
+                } else if ($userRol == 'Usuario') {
+                    $userRol = 'user';
+                }
+                $this->model->editUser($userName, $userRol);
+                $this->view->showAdminPage($users, "Los cambios se realizaron con exito", "");
+            } else {
+                $this->view->showAdminPage($users, "", "Seleccione un usuario y un rol de usuario");
+            }
+        }
+
+        function deleteUser() {
+            $this->authHelper->checkLoggedIn();
+            if ($_POST['user'] != 'Seleccione') {
+                $userName = $_POST['user'];
+                $this->model->deleteUserFromDB($userName);
+                $users = $this->model->getUsers();
+                $this->view->showAdminPage($users, "", "Los cambios se realizaron con exito");
+            } else {
+                $users = $this->model->getUsers();
+                $this->view->showAdminPage($users, "", "Seleccione un usuario");
+            }
+        }
     }
