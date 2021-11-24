@@ -102,8 +102,13 @@
 
         function deleteMark($id) {
             $this->authHelper->checkLoggedIn();
-            $this->model->deleteMarkFromDB($id);
-            $this->view->showMarksLoc();
+            $cars = $this->model->checkCar($id);
+            if (!$cars) {
+                $this->model->deleteMarkFromDB($id);
+                $this->view->showMarksLoc();
+            } else {
+                $this->view->showMarksLoc();
+            }
         }
         
         function showAdmin() {

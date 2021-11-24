@@ -24,7 +24,7 @@
         </div>
         <div class="nav-div-logout">
             <p id="usuario">{$userLogged}</p>
-            <a href="logout">Cerrar sesion</a>
+            <a href="logout">Cerrar sesión</a>
             {if $rol == 'admin'}<a href="admin">Admin</a>{else}{/if}
         </div>
     </nav>

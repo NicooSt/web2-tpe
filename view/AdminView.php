@@ -65,5 +65,4 @@
         function showMarksLoc() {
             header("Location: " . BASE_URL . "marks");     
         }
-
     }

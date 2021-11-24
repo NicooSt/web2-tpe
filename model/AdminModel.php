@@ -39,6 +39,12 @@
             $request->execute(array($id));
         }
 
+        function checkCar($id) {
+            $request = $this->db->prepare("SELECT * FROM autos WHERE id_marca = ?");
+            $request->execute(array($id));
+            return $request->fetchAll(PDO::FETCH_OBJ);
+        }
+
         function checkMark($marca) {
             $request = $this->db->prepare('SELECT * FROM marcas WHERE marca = ?');
             $request->execute(array($marca));
