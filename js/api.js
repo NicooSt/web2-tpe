@@ -1,13 +1,23 @@
 "use strict";
 const api_url = "api/comments";
 
+let app = new Vue({
+    el: "#addedComments",
+    data: {
+        rol: null,
+        carComments: []
+    }
+});
+
 getComments();
 async function getComments() {
     let idCar = document.querySelector("#id-car").value;
     try {
         let response = await fetch(`${api_url}/${idCar}`);
         let comments = await response.json();
-        showComments(comments, idCar);
+        if (response.status === 200) {
+            showComments(comments);
+        }
     } catch (error) {
         console.log(error);
     }
@@ -16,12 +26,14 @@ async function getComments() {
 document.querySelector("#form-comments").addEventListener("submit", addComment);
 async function addComment(e) {
     e.preventDefault();
+    let message = document.querySelector("#message-comment");
     let user = document.querySelector("#usuario");
     let form = document.querySelector('#form-comments');
     let data = new FormData(form);
     let comment = {
         "contenido": data.get("comment"),
-        "puntaje": data.get("score"),
+        "fecha": getDate(),
+        "puntaje": getScore(),
         "user": user.innerHTML,
         "id_auto": data.get("id-car")
     }
@@ -34,14 +46,33 @@ async function addComment(e) {
         if (response.status === 200) {
             getComments();
             document.querySelector("#comment").value = "";
+            message.innerHTML = "";
+            removeChecked();
+        } else if (response.status === 400) {
+            message.innerHTML = "Inserte un comentario y un puntaje";
         }
     } catch (error) {
         console.log(error);
     }
 }
 
-async function deleteComment() {
-    let idComment = this.getAttribute("id-comment");
+function getScore() {
+    let form = document.querySelector('#form-comments');
+    let data = new FormData(form);
+    return data.get("estrellas");
+}
+
+function removeChecked() {
+    let objHTML = document.getElementsByClassName("score");
+    let inpScore = Array.from(objHTML);
+    inpScore.forEach(input => {
+        if (input.checked == true) {
+            input.checked = false;
+        }
+    });
+}
+
+async function deleteComment(idComment) {
     try {
         let response = await fetch(`${api_url}/${idComment}`, {
             "method": "DELETE"
@@ -54,52 +85,34 @@ async function deleteComment() {
     }
 }
 
-function showComments(comments, idCar) {
+function showComments(comments) {
     let rol = document.querySelector("#rol-user").value;
-    let contAddComment = document.querySelector("#addedComments");
-    contAddComment.innerHTML = "";
-    let isComment = true;
+    let title = document.querySelector("#title-comment");
+    let contComments = document.querySelector("#addedComments");
+    contComments.innerHTML = "";
 
     for (let i = 0; i < comments.length; i++) {
-        if (comments[i].id_auto == idCar) {
-            if (isComment == true) {
-                let boxTitleComment = document.createElement("div");
-                boxTitleComment.classList.add("title-comment");
-                let titleComment = document.createElement("p");
-                titleComment.innerHTML = "Comentarios";
-                boxTitleComment.appendChild(titleComment);
-                contAddComment.appendChild(boxTitleComment);
-                isComment = false;
-            }
-            let contBoxComment = document.createElement("div");
-            let boxComment = document.createElement("div");
-            boxComment.classList.add("box-comment");
-            let infoComment = document.createElement("div");
-            let userName = document.createElement("p");
-            userName.innerHTML = comments[i].user;
-            infoComment.appendChild(userName);
-            let box_btnDelete_score = document.createElement("div");
-            box_btnDelete_score.classList.add("box-btnDelete-score")
-            if (rol == "admin") {
-                let btnDelete = document.createElement("button");
-                btnDelete.innerHTML = "Borrar"; 
-                btnDelete.setAttribute("id-comment", comments[i].id_comentario);
-                btnDelete.addEventListener("click", deleteComment);
-                box_btnDelete_score.appendChild(btnDelete);
-            }
-            let score = document.createElement("p");
-            score.innerHTML = "Puntaje: " + comments[i].puntaje;
-            box_btnDelete_score.appendChild(score);
-            infoComment.appendChild(box_btnDelete_score);
-            let contentComment = document.createElement("div"); 
-            let comment = document.createElement("p");
-            comment.classList.add("comment");
-            comment.innerHTML = comments[i].contenido;
-            contentComment.appendChild(comment);
-            boxComment.appendChild(infoComment);
-            boxComment.appendChild(contentComment);
-            contBoxComment.appendChild(boxComment);
-            contAddComment.appendChild(contBoxComment);        
+        if (comments != "No existen comentarios") {
+            title.innerHTML = "Comentarios";
+            app.rol = rol;
+            app.carComments.push(comments[i]);
+        } else {
+            title.innerHTML = "";
         }
     }
+}
+
+function getDate() {
+    const d = new Date();
+    const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+    let dia = new Date().getDate();
+    let ano = new Date().getFullYear();
+    let hora = new Date().getHours();
+    let minutos = new Date().getMinutes();
+
+    if (dia < 10) { dia = "0" + dia; }
+    if (hora < 10) { hora = "0" + hora; }
+    if (minutos < 10) { minutos = "0" + minutos; }
+    let fecha = dia + "/" + months[d.getMonth()] + "/" + ano + " " + hora + ":" + minutos;
+    return fecha;
 }

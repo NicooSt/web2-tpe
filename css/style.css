@@ -193,6 +193,14 @@ table tbody tr td:last-child a:hover {
     border: 1px solid whitesmoke;
 }
 
+/* Mensaje de alerta / error al borrar marca */
+.deleteMark-alert {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(255, 187, 0);
+    margin-bottom: 15px;
+}
+
 /* Boton de agregar nuevo auto/marca */
 .btn-new {
     font-size: 25px;
@@ -354,34 +362,40 @@ table tbody tr td:last-child a:hover {
     color: whitesmoke;
 }
 
-#form-comments {
+.form-comments {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
 }
 
-#form-comments div:first-child {
+.form-comments-firstchild {
     display: flex;
-    margin-bottom: 15px;
 }
 
-#form-comments div:last-child {
+.form-comments-firstchild textarea {
+    font-size: 20px;
+    width: 700px;
+    height: 100px;
+    resize: none;
+    padding: 10px;
+}
+
+.form-comments-lastchild {
     width: 100%;
     display: flex;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-score {
+    display: flex;
+    align-items: center;
     width: 100%;
-    justify-content: center;
 }
 
 .container-score p {
     font-size: 25px;
-    color: whitesmoke;
-}
-
-.container-score input {
     color: whitesmoke;
     margin-left: 20px;
 }
@@ -408,12 +422,12 @@ table tbody tr td:last-child a:hover {
     font-weight: bold;
 }
 
-#form-comments textarea {
-    font-size: 20px;
-    width: 700px;
-    height: 100px;
-    resize: none;
-    padding: 10px;
+/* Mensaje de alerta al agregar comentario */
+#message-comment {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: rgb(255, 187, 0);
 }
 
 /* Comentarios agregados */
@@ -445,7 +459,8 @@ table tbody tr td:last-child a:hover {
 .box-btnDelete-score {
     display: flex;
     justify-content: space-between;
-    width: 150px;
+    align-items: center;
+    width: 310px;
 }
 
 .box-btnDelete-score button {
@@ -459,8 +474,54 @@ table tbody tr td:last-child a:hover {
 }
 
 /* Puntaje */
-#score {
-    color: whitesmoke;
+.form-puntuacion {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.form-puntuacion p {
+    text-align: center;
+}
+
+.form-puntuacion label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}
+
+.clasificacion {
+    margin-left: 15px;
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+.clasificacion label:hover,
+.clasificacion label:hover ~ label {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+    color: orange;
+}
+
+/* Puntaje en comentario */
+.comment-score > div {
+    display: flex;
+}
+
+.comment-score-stars {
+    color: grey;
+}
+
+.checked {
+    color: orange;
 }
 
 /* Contenedor de link 'volver' */

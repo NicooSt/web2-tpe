@@ -12,9 +12,9 @@
             return $request->fetchAll(PDO::FETCH_OBJ);
         }
 
-        function addCommentToDB($content, $score, $user, $idCar) {
-            $request = $this->db->prepare('INSERT INTO comentarios(contenido, puntaje, user, id_auto)' . 'VALUES(?, ?, ?, ?)');
-            $request->execute(array($content, $score, $user, $idCar));
+        function addCommentToDB($content, $date, $score, $user, $idCar) {
+            $request = $this->db->prepare('INSERT INTO comentarios(contenido, fecha, puntaje, user, id_auto)' . 'VALUES(?, ?, ?, ?, ?)');
+            $request->execute(array($content, $date, $score, $user, $idCar));
         }
 
         function getCommentFromDB($idComment) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2021 a las 02:03:10
+-- Tiempo de generación: 06-12-2021 a las 02:19:48
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -51,9 +51,9 @@ INSERT INTO `autos` (`id_auto`, `modelo`, `origen`, `anio`, `id_marca`) VALUES
 (10, 'Uno', 'Italia', 1983, 3),
 (11, 'Impala', 'Estados Unidos', 1970, 1),
 (12, 'Montero', 'Japón', 1982, 12),
-(13, '600', 'Italia', 1955, 3),
+(13, 'Corsa', 'Argentina', 1990, 1),
 (14, 'E3', 'Alemania', 1968, 15),
-(15, 'Falcon', 'Argentina', 1962, 4);
+(18, 'Cruze', 'Argentina', 2021, 1);
 
 -- --------------------------------------------------------
 
@@ -64,10 +64,22 @@ INSERT INTO `autos` (`id_auto`, `modelo`, `origen`, `anio`, `id_marca`) VALUES
 CREATE TABLE `comentarios` (
   `id_comentario` int(11) NOT NULL,
   `contenido` varchar(200) NOT NULL,
+  `fecha` varchar(45) NOT NULL,
   `puntaje` int(11) NOT NULL,
   `user` varchar(45) NOT NULL,
   `id_auto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `contenido`, `fecha`, `puntaje`, `user`, `id_auto`) VALUES
+(10, 'EHhhahdhawd', '27/11/2021 21:09', 3, 'VALEN', 2),
+(36, 'aaaaaaaaaaaaaaa', '27/11/2021 23:52', 1, 'CACHO', 2),
+(49, 'adadad', '28/11/2021 21:11', 4, 'NICO', 2),
+(52, 'Hola', '28/11/2021 21:54', 1, 'NICO', 2),
+(56, 'Hola', '01/12/2021 14:19', 2, 'NICO', 3);
 
 -- --------------------------------------------------------
 
@@ -117,7 +129,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user`, `password`, `rol`) VALUES
-('NICO', '$2y$10$AMjoj54peeqivrBmmvLOp.Z3ydbrQQ6dksyhiW1Z8cuHsRy0M8Mca', 'admin'),
+('CACHO', '$2y$10$l8JQC11ialHQKdogBZb5o.T2C.p55MTpVmlSUXbUPNvRHLvbSkyN2', 'user'),
+('JAVIER', '$2y$10$ruvbdz8a35x0h.mNHbkKJ.p2JWEK9sQTTKcwvUeFg2GE3gTbMPZiG', 'admin'),
+('NICO', '$2y$10$G1k9qLBpCThKUp3444TDmuXaZvXQiS/1WKJGtbCHTeEviD9ohNTiq', 'admin'),
 ('VALEN', '$2y$10$2sHCp3XYsfhY/HF7CDLye.BBSiIY5wQ.k48iBQU1r82fAgQbqXzvm', 'admin');
 
 --
@@ -159,19 +173,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `autos`
 --
 ALTER TABLE `autos`
-  MODIFY `id_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas

@@ -21,6 +21,7 @@
             {/foreach}
         </tbody>
     </table>
+    {if $message != ""}<p class="deleteMark-alert">{$message}</p>{/if}
     {if $rol == 'admin'}<a class="btn-new" href="showAddMark">AGREGAR NUEVA MARCA</a>{/if}
 </section>
 {include file="templates/footer.tpl"}

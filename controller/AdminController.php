@@ -1,15 +1,18 @@
 <?php
     require_once 'model/AdminModel.php';
     require_once 'view/AdminView.php';
+    require_once 'view/CarsView.php';
     require_once 'helpers/AuthHelper.php';
 
     class AdminController {
         private $model;
         private $view;
+        private $carsview;
 
         function __construct() {
             $this->model = new AdminModel();
             $this->view = new AdminView();
+            $this->carsview = new CarsView();
             $this->authHelper = new AuthHelper();
         }
         
@@ -107,7 +110,8 @@
                 $this->model->deleteMarkFromDB($id);
                 $this->view->showMarksLoc();
             } else {
-                $this->view->showMarksLoc();
+                $marks = $this->model->getMarksList();
+                $this->carsview->showMarksList($marks, "No se puede eliminar marcas con autos asociados");
             }
         }
         

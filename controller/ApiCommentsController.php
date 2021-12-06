@@ -23,8 +23,8 @@
 
         function addComment() {
             $body = $this->getBody();
-            if ($body->contenido && $body->puntaje && $body->user && $body->id_auto) {
-                $this->model->addCommentToDB($body->contenido, $body->puntaje, $body->user, $body->id_auto);
+            if ($body->contenido && $body->fecha && $body->puntaje && $body->user && $body->id_auto) {
+                $this->model->addCommentToDB($body->contenido, $body->fecha, $body->puntaje, $body->user, $body->id_auto);
                 $this->view->response("El comentario se inserto con exito", 200);
             } else {
                 $this->view->response("Faltan completar campos", 400);
@@ -38,7 +38,7 @@
                 $this->model->deleteCommentFromDB($idComment);
                 $this->view->response("El comentario fue eliminado con exito.", 200);   
             } else {
-                $this->view->response("El comentario con el id = $idComment no existe.", 200);
+                $this->view->response("El comentario con el id = $idComment no existe.", 404);
             }
         }
         

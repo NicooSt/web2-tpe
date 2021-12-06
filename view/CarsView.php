@@ -29,11 +29,12 @@
             $this->smarty->display('templates/carDesc.tpl');           
         }
         
-        function showMarksList($marks) {
+        function showMarksList($marks, $message) {
             $this->smarty->assign('mark', '');
             $this->smarty->assign('tab', 'Lista de marcas');
             $this->smarty->assign('title', 'marcas');
             $this->smarty->assign('marks', $marks);
+            $this->smarty->assign('message', $message);
             $this->smarty->assign('userLogged', $_SESSION['user']);
             $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/marksList.tpl');

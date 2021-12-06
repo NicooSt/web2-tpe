@@ -30,7 +30,7 @@
         function showMarks() {
             $this->authHelper->checkLoggedIn();
             $marks = $this->model->getMarksList();
-            $this->view->showMarksList($marks);
+            $this->view->showMarksList($marks, "");
         }
 
         function filterByMark() {

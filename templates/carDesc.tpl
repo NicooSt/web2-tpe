@@ -16,21 +16,27 @@
         <div class="title-comment">
             <p>Agregar comentario</p>
         </div>
-        <form id="form-comments">
-            <div>
+        <form id="form-comments" class="form-comments">
+            <div class="form-comments-firstchild">
                 <textarea type="text" name="comment" placeholder='Escribe tu opinión...' id="comment"></textarea>
             </div>
-            <div>
+            <div class="form-comments-lastchild">
                 <div class="container-score">
                     <p>Puntaje:</p>
-                    <input type="range" min="1" max="5" list="tickmarks" id="score" name="score">
-                    <datalist id="tickmarks">
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option value="3"></option>
-                        <option value="4"></option>
-                        <option value="5"></option>
-                    </datalist>
+                    <form class="form-puntuacion">
+                        <p class="clasificacion">
+                            <input id="radio1" type="radio" class="score" name="estrellas" value="5">
+                            <label for="radio1">★</label>
+                            <input id="radio2" type="radio" class="score" name="estrellas" value="4">
+                            <label for="radio2">★</label>
+                            <input id="radio3" type="radio" class="score" name="estrellas" value="3">
+                            <label for="radio3">★</label>
+                            <input id="radio4" type="radio" class="score" name="estrellas" value="2">
+                            <label for="radio4">★</label>
+                            <input id="radio5" type="radio" class="score" name="estrellas" value="1">
+                            <label for="radio5">★</label>
+                        </p>
+                    </form>
                     <input type="hidden" name="id-car" id="id-car" value="{$idCar}">
                     <input type="hidden" id="rol-user" value="{$rol}">
                 </div>
@@ -40,7 +46,14 @@
             </div> 
         </form>
     </div>
-    <div class="container-addedComments" id="addedComments">
+    <p id="message-comment"></p>
+    <div class="container-addedComments">
+        <div class="title-comment">
+            <p id="title-comment"></p>
+        </div>
+        <div id="addedComments">
+            {include file="templates/vue/carComments.tpl"}
+        </div>
     </div>
 </div>
 <script src="js/api.js"></script>
