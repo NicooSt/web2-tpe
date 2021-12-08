@@ -1,4 +1,4 @@
-    * {
+* {
     font-family: 'Rubik', sans-serif;
     margin: 0;
     padding: 0;
@@ -72,7 +72,7 @@ nav {
 }
 
 /* Mitad de pagina */
-section {
+.cont-table {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -81,7 +81,7 @@ section {
 }
 
 /* Titulo de tabla */
-.list-title {
+.cont-table__title {
     font-size: 50px;
     text-align: center;
     text-decoration: underline;
@@ -90,27 +90,27 @@ section {
 }
 
 /* Formulario de filtro */
-#form-filter {
+.form-filter {
     width: 45%;
     display: flex;
     justify-content: flex-end;
 }
 
 /* Texto filtro */
-#form-filter label {
+.form-filter__text {
     font-size: 18px;
     color: whitesmoke;
 }
 
 /* Select filtro */
-#form-filter select {
+.form-filter__select {
     height: 20px;
     padding: 2px 5px;
     margin-left: 10px;
 }
 
 /* Boton filtro */
-#form-filter button {
+.form-filter__btn-submit {
     font-size: 15px;
     height: 20px;
     margin-left: 10px;
@@ -120,17 +120,16 @@ section {
     border: 1px solid whitesmoke;
 }
 
-#form-filter button:hover {
+.form-filter__btn-submit:hover {
     color: whitesmoke;
     background-color: black;
     border: 1px solid whitesmoke;
 }
 
 /* Tabla */
-table {
+.table {
     font-size: 20px;
     text-align: center;
-    text-transform: capitalize;
     margin-top: 10px;
     margin-bottom: 20px;
     padding: 20px;
@@ -139,12 +138,13 @@ table {
     border-radius: 5px;
 }
 
-table thead tr {
+.table__thead-row {
     color: whitesmoke;
     background-color: black;
 }
 
-table thead tr th, table tbody tr td {
+.table__thead-cell, 
+.table__tbody-cell {
     width: 200px;
     height: 50px;
     border: 2px solid black;
@@ -152,15 +152,15 @@ table thead tr th, table tbody tr td {
 
 /* Primera columna de tabla */
 /* Primera celda de cada fila de la primera columna */
-table tbody tr td:first-child {
+.table__tbody-cell--cont-link {
     position: relative;
-    float: left;
+    /* float: left; */
     overflow: hidden;
     line-height: 50px;
 }
 
 /* Elemento a de primera celda de cada fila */
-table tbody tr td:first-child a {
+.table__tbody-link--black {
     text-decoration: none;
     position: absolute;
     width: 100%;
@@ -171,26 +171,26 @@ table tbody tr td:first-child a {
     color: black;
 }
 
-table tbody tr td a:hover {
+.table__tbody-link:hover {
     color: whitesmoke;
     background-color: black;
 }
 
-/* Botones de celdas de ultima columna */
-table tbody tr td:last-child a {
-    text-decoration: none;
-    margin: 0 3px;
-    padding: 3px;
-    color: black;
-    background-color: whitesmoke;
-    border: 1px solid black;
-    border-radius: 5px;
+.table__tbody-cell--cont-delete-edit {
+    display: flex;
 }
 
-table tbody tr td:last-child a:hover {
-    color: whitesmoke;
-    background-color: black;
-    border: 1px solid whitesmoke;
+.table__tbody-link--size {
+    position: relative;
+    flex-grow: 1;
+}
+
+.table__tbody-link--border-right {
+    border-right: 0.5px solid black;
+}
+
+.table__tbody-link--border-left {
+    border-left: 0.5px solid black;
 }
 
 /* Mensaje de alerta / error al borrar marca */
@@ -202,7 +202,7 @@ table tbody tr td:last-child a:hover {
 }
 
 /* Boton de agregar nuevo auto/marca */
-.btn-new {
+.cont-table__btn-add {
     font-size: 25px;
     font-weight: bold;
     text-align: center;
@@ -216,7 +216,7 @@ table tbody tr td:last-child a:hover {
     border: 2px solid black;
 }
 
-.btn-new:hover {
+.cont-table__btn-add:hover {
     color: whitesmoke;
     background-color: black;
     border: 2px solid whitesmoke;
@@ -228,11 +228,10 @@ table tbody tr td:last-child a:hover {
     flex-direction: column;
     align-items: center;
     color: whitesmoke;
-    width: 100vw;
-    height: 60vh;
+    margin-top: 100px;
 }
 
-.cont-admin p {
+.cont-admin__title {
     font-size: 45px;
     font-weight: bold;
     text-decoration: underline;
@@ -280,6 +279,11 @@ table tbody tr td:last-child a:hover {
     margin: 10px;
 }
 
+/* Input subir imagen */
+#inp-carImages {
+    width: auto;
+}
+
 .cont-admin button, .cont-admin a {
     font-size: 15px;
     font-weight: bold;
@@ -302,7 +306,9 @@ table tbody tr td:last-child a:hover {
     cursor: pointer;
 }
 
-.cont-admin form div:last-child .admin-message {
+/* Mensaje de alerta admin / imagenes */
+.cont-admin form div:last-child .admin-message,
+.form-admin__message {
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -310,6 +316,60 @@ table tbody tr td:last-child a:hover {
     margin-bottom: 10px;
     color: rgb(255, 187, 0);
     text-decoration: none;
+}
+
+/* Vista de imagenes cargadas en admin */
+.cont-uploadedImages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.cont-uploadedImages__message {
+    color: whitesmoke;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.cont-notloadedImages__message {
+    color: rgb(255, 187, 0);
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.cont-uploadedImages__elem1 {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cont-uploadedImagenes__elem1--margin {
+    margin-bottom: 0;
+}
+
+.cont-uploadedImages__elem2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont-uploadedImages__img {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid whitesmoke;
+}
+
+.cont-uploadedImages__deleteLink {
+    height: 25px;
+    margin: 0;
+    padding: 0;
 }
 
 /* Titulo de descripcion */

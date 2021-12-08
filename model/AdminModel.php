@@ -21,9 +21,38 @@
         }
 
         function getCar($id) {
-            $request = $this->db->prepare('SELECT uno.modelo, dos.marca FROM autos uno LEFT JOIN marcas dos ON uno.id_marca = dos.id_marca WHERE uno.id_auto = ?');
+            $request = $this->db->prepare('SELECT uno.id_auto, uno.modelo, dos.marca FROM autos uno LEFT JOIN marcas dos ON uno.id_marca = dos.id_marca WHERE uno.id_auto = ?');
             $request->execute(array($id));
             return $request->fetch(PDO::FETCH_OBJ);
+        }
+
+        function getImages($id) {
+            $request = $this->db->prepare('SELECT id_imagen, ruta FROM imagenes WHERE id_auto = ?');
+            $request->execute(array($id));
+            return $request->fetchAll(PDO::FETCH_OBJ);
+        }
+
+        function addCarImagesToDB($id, $imagesTempPaths) {
+            $paths = $this->uploadImage($imagesTempPaths);
+            $request = $this->db->prepare("INSERT INTO imagenes(ruta, id_auto)" . "VALUES(?, ?)");
+            foreach ($paths as $path) {
+                $request->execute(array($path, $id));
+            }
+        }
+
+        function uploadImage($imagesTempPaths) {
+            $paths = [];
+            foreach ($imagesTempPaths as $imgTempPath) {
+                $finalPath = 'img/cars/' . uniqid() . '.jpg';
+                move_uploaded_file($imgTempPath, $finalPath);
+                $paths[] = $finalPath;
+            }
+            return $paths;
+        }
+
+        function deleteCarImageFromDB($idImage) {
+            $request = $this->db->prepare("DELETE FROM imagenes WHERE id_imagen = ?");
+            $request->execute(array($idImage));
         }
 
         function editCarFromDB($modelo, $marca, $origen, $anio, $idCar) {

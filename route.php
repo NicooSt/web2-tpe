@@ -46,6 +46,15 @@
         case 'deleteCar':
             $adminController->deleteCar($params[1]);
             break;
+        case 'showAddCarImages':
+            $adminController->showAddCarImages($params[1]);
+            break;
+        case 'addCarImages':
+            $adminController->addCarImages($params[1]);
+            break;
+        case 'deleteCarImage':
+            $adminController->deleteCarImage($params[1], $params[2]);
+            break;
         case 'showAddMark':
             $adminController->showAddMark();
             break;

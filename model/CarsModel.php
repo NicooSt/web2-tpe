@@ -13,9 +13,15 @@
         }
 
         function getCar($id) {
-            $request = $this->db->prepare('SELECT a.modelo, a.origen, a.anio, b.marca FROM autos a LEFT JOIN marcas b ON a.id_marca = b.id_marca WHERE a.id_auto = ?');
+            $request = $this->db->prepare('SELECT a.id_auto, a.modelo, a.origen, a.anio, b.marca FROM autos a LEFT JOIN marcas b ON a.id_marca = b.id_marca WHERE a.id_auto = ?');
             $request->execute(array($id));
             return $request->fetch(PDO::FETCH_OBJ);
+        }
+
+        function getCarImages($id) {
+            $request = $this->db->prepare('SELECT * FROM imagenes WHERE id_auto = ?');
+            $request->execute(array($id));
+            return $request->fetchAll(PDO::FETCH_OBJ);
         }
         
         function getMarksList() {

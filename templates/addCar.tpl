@@ -1,6 +1,6 @@
 {include file="templates/header.tpl"}
 <section class="cont-admin">
-    <p id="admin-title">Agregar nuevo auto</p>
+    <p class="cont-admin__title">Agregar nuevo auto</p>
     <form action="addCar" method="POST">
         <div>
             <input placeholder="Modelo" type="text" name="modelo" required>

@@ -8,6 +8,17 @@
         <li>Año de origen: <span>{$car->anio}</span></li>
     </ul>
 </div>
+{if $images != ""}
+    <div class="cont-uploadedImages">
+        <div class="cont-uploadedImages__elem1 cont-uploadedImagenes__elem1--margin">
+            {foreach from=$images item=$image}
+                <div class="cont-uploadedImages__elem2">
+                    <img src="{$image->ruta}" alt="image{$image->id_imagen}" class="cont-uploadedImages__img">
+                </div>
+            {/foreach}
+        </div>
+    </div>
+{/if}
 <div class="div-link">
     <a href="cars">VOLVER</a>
 </div>
@@ -37,7 +48,7 @@
                             <label for="radio5">★</label>
                         </p>
                     </form>
-                    <input type="hidden" name="id-car" id="id-car" value="{$idCar}">
+                    <input type="hidden" name="id-car" id="id-car" value="{$car->id_auto}">
                     <input type="hidden" id="rol-user" value="{$rol}">
                 </div>
                 <div class="container-btn-addComment">

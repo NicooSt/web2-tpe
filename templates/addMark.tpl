@@ -1,6 +1,6 @@
 {include file="templates/header.tpl"}
 <section class="cont-admin">
-    <p id="admin-title">Agregar nueva marca</p>
+    <p class="cont-admin__title">Agregar nueva marca</p>
     <form action="addMark" method="POST">
         <div>
             <input placeholder="Marca" type="text" name="marcaNueva" required>

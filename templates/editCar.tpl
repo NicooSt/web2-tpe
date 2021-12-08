@@ -1,6 +1,6 @@
 {include file="templates/header.tpl"}
 <section class="cont-admin">
-    <p id="admin-title">Editar {$car->marca} {$car->modelo}</p>
+    <p class="cont-admin__title">Editar {$car->marca} {$car->modelo}</p>
     <form action="editCar/{$id}" method="POST">
         {* <input type="text" placeholder="{$car->marca} {$car->modelo}" readonly> *}
         <div>

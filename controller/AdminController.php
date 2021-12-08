@@ -56,6 +56,72 @@
             $this->model->deleteCarFromDB($id);
             $this->view->showCarsLoc();
         }
+        
+        function showAddCarImages($id) {
+            $this->authHelper->checkLoggedIn();
+            $car = $this->model->getCar($id);
+            $images = $this->model->getImages($id);
+            if ($images) {
+                $this->view->showAddCarImagesPage($car, $images, '');
+            } else {
+                $this->view->showAddCarImagesPage($car, '', '');
+            }
+        }
+
+        function addCarImages($id) {
+            $this->authHelper->checkLoggedIn();
+            if ($_FILES['inp-carImages']['name'][0] != "") {
+                $imagesTempPaths = $_FILES['inp-carImages']['tmp_name'];
+                $imagesType = $_FILES['inp-carImages']['type'];
+                $checkImgExtension = $this->checkImgExtension($imagesType);
+                if ($checkImgExtension) {
+                    $this->model->addCarImagesToDB($id, $imagesTempPaths);
+                    $car = $this->model->getCar($id);
+                    $images = $this->model->getImages($id);
+                    $this->view->showAddCarImagesPage($car, $images, 'Las imágenes se insertaron correctamente');
+                } else {
+                    $images = $this->model->getImages($id);
+                    if ($images) {
+                        $car = $this->model->getCar($id);
+                        $this->view->showAddCarImagesPage($car, $images, 'La imágen debe ser .jpg, .jpeg o .png');
+                    } else {
+                        $car = $this->model->getCar($id);
+                        $this->view->showAddCarImagesPage($car, '', 'La imágen debe ser .jpg, .jpeg o .png');   
+                    }
+                }
+            } else {
+                $images = $this->model->getImages($id);
+                if ($images) {
+                    $car = $this->model->getCar($id);
+                    $this->view->showAddCarImagesPage($car, $images, 'Selecciona una imágen');
+                } else {
+                    $car = $this->model->getCar($id);
+                    $this->view->showAddCarImagesPage($car, '', 'Selecciona una imágen');
+                }
+            }
+        }
+
+        function checkImgExtension($imagesType) {
+            foreach ($imagesType as $imageType) {
+                if ($imageType != "image/jpg" && $imageType != "image/jpeg" && $imageType != "image/png") {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function deleteCarImage($idCar, $idImage) {
+            $this->authHelper->checkLoggedIn();
+            $this->model->deleteCarImageFromDB($idImage);
+            $images = $this->model->getImages($idCar);
+            if ($images) {
+                $car = $this->model->getCar($idCar);
+                $this->view->showAddCarImagesPage($car, $images, '');
+            } else {
+                $car = $this->model->getCar($idCar);
+                $this->view->showAddCarImagesPage($car, '', '');
+            }
+        }
 
         function showAddMark() {
             $this->authHelper->checkLoggedIn();

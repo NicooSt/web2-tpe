@@ -19,11 +19,11 @@
             $this->smarty->display('templates/carsList.tpl');
         }
 
-        function showCarDesc($car, $idCar) {
+        function showCarDesc($car, $images) {
             $this->smarty->assign('mark', '');
             $this->smarty->assign('tab', $car->marca . ' ' . $car->modelo);
             $this->smarty->assign('car', $car);
-            $this->smarty->assign('idCar', $idCar);
+            $this->smarty->assign('images', $images);
             $this->smarty->assign('userLogged', $_SESSION['user']);
             $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/carDesc.tpl');           

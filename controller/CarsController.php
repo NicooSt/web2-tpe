@@ -24,7 +24,12 @@
         function showCar($id) {
             $this->authHelper->checkLoggedIn();
             $car = $this->model->getCar($id);
-            $this->view->showCarDesc($car, $id);
+            $images = $this->model->getCarImages($id);
+            if ($images) {
+                $this->view->showCarDesc($car, $images);
+            } else {
+                $this->view->showCarDesc($car, '');
+            }
         }
 
         function showMarks() {

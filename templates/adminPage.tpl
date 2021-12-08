@@ -1,6 +1,6 @@
 {include file="templates/header.tpl"}
 <section class="cont-admin">
-    <p id="admin-title">Administración</p>
+    <p class="cont-admin__title">Administración</p>
     <form action="assignRol" method="POST">
         <div>  
             <p class="p-admin">Usuario:

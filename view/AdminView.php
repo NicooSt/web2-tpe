@@ -27,6 +27,17 @@
             $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/editCar.tpl');           
         }
+
+        function showAddCarImagesPage($car, $images, $message) {
+            $this->smarty->assign('car', $car);
+            $this->smarty->assign('images', $images);
+            $this->smarty->assign('message', $message);
+            $this->smarty->assign('tab', 'Agregar imágen');
+            $this->smarty->assign('mark', '');
+            $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
+            $this->smarty->display('templates/addCarImage.tpl');
+        }
         
         function showAddMarkPage() {
             $this->smarty->assign('tab', 'Agregar marca');

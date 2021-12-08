@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <base href="{BASE_URL}">
     <meta charset="UTF-8">
@@ -13,11 +12,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>{if !$mark == ''}Lista de {$mark}{else}{$tab}{/if}</title>
 </head>
-
 <body>
     <nav>
         <div class="nav-div-logo">
-            <img src="img/logo-auto.png" alt="logo">
+            <img src="img/logo/logo-auto.png" alt="logo">
         </div>
         <div class="nav-div-btn">
             <a href="cars">Lista de autos</a>

@@ -1,6 +1,6 @@
 {include file="templates/header.tpl"}
 <section class="cont-admin">
-    <p id="admin-title">Editar {$markTitle->marca}</p>
+    <p class="cont-admin__title">Editar {$markTitle->marca}</p>
     <form action="editMark/{$id}" method="POST">
         <div>
             <input placeholder="{$markTitle->marca}" type="text" readonly>
