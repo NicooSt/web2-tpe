@@ -12,7 +12,11 @@
         $action = 'cars';
     }
  
-    $params = explode('/', $action); 
+    $params = explode('/', $action);
+    // Dirigido a pagina principal va a lista de pagina 1
+    if (empty($params[1])) {
+        $params[1] = 1;
+    }
     $carsController = new CarsController();
     $adminController = new AdminController();
     $sessionController = new SessionController();
@@ -20,7 +24,8 @@
 
     switch ($params[0]) {
         case 'cars':
-            $carsController->showCars();
+            // $params[1] = pagina
+            $carsController->showCars($params[1]);
             break;
         case 'viewCar':
             $carsController->showCar($params[1]);
@@ -29,7 +34,11 @@
             $carsController->showMarks();
             break;
         case 'filter':
-            $carsController->filterByMark();
+            if (empty($params[2])) {
+                $params[2] = "";
+            }
+            // $params[1] = pagina, params[2] = marca
+            $carsController->filterByMark($params[1], $params[2]);
             break;
         case 'showAddCar':
             $adminController->showAddCar();

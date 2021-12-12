@@ -14,11 +14,46 @@
             $this->authHelper = new AuthHelper();
         }
 
-        function showCars() {
+        function showCars($actualPage) {
             $this->authHelper->checkLoggedIn();
-            $cars = $this->model->getCarsList();
+            // Consigo los autos de la pagina actual
+            $cars = $this->model->getCarsPerPage($actualPage, "cars");
+            // Consigo la cantidad total de paginas necesarias
+            $totalPages = $this->model->getNumOfPages("cars");
+            // Consigo todas las marcas
             $marksFilter = $this->model->getMarksList();
-            $this->view->showCarsList($cars, $marksFilter);
+            $this->view->showCarsList($cars, $marksFilter, $totalPages, $actualPage);
+        }
+
+        function filterByMark($actualPage, $mark) {
+            if (isset($_POST['filter'])) {
+                if ($_POST['filter'] != 'Todos') {
+                    $this->authHelper->checkLoggedIn();
+                    $mark = $_POST['filter'];
+                    // Consigo los autos de la marca indicada
+                    $carsByMark = $this->model->getCarsPerPage($actualPage, $mark);
+                    if (!$carsByMark) {
+                        // Si no hay autos cargados, la paginacion no se muestra
+                        // tampoco se itera para mostrar en la tabla
+                        $carsByMark[0] = "";
+                    }
+                    // Consigo la cantidad total de paginas necesarias
+                    // Paso por parametro los autos de la marca indicada
+                    $totalPages = $this->model->getNumOfPages($mark);
+                    // Consigo todas las marcas
+                    $marksFilter = $this->model->getMarksList();
+                    $this->view->showCarsByMark($carsByMark, $marksFilter, $mark, $totalPages, $actualPage);
+                }
+                else {
+                    $this->showCars($actualPage);
+                }
+            } else {
+                $this->authHelper->checkLoggedIn();
+                $carsByMark = $this->model->getCarsPerPage($actualPage, $mark);
+                $totalPages = $this->model->getNumOfPages($mark);
+                $marksFilter = $this->model->getMarksList();
+                $this->view->showCarsByMark($carsByMark, $marksFilter, $mark, $totalPages, $actualPage);
+            }
         }
 
         function showCar($id) {
@@ -36,18 +71,5 @@
             $this->authHelper->checkLoggedIn();
             $marks = $this->model->getMarksList();
             $this->view->showMarksList($marks, "");
-        }
-
-        function filterByMark() {
-            if ($_POST['filter'] != 'Todos') {
-                $this->authHelper->checkLoggedIn();
-                $mark = $_POST['filter'];
-                $carsByMark = $this->model->getByMark($mark);
-                $marksFilter = $this->model->getMarksList();
-                $this->view->showCarsByMark($carsByMark, $mark, $marksFilter);
-            }
-            else {
-                $this->showCars();
-            }
         }
     }

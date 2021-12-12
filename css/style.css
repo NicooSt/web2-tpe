@@ -118,6 +118,7 @@ nav {
     color: black;
     background-color: whitesmoke;
     border: 1px solid whitesmoke;
+    cursor: pointer;
 }
 
 .form-filter__btn-submit:hover {
@@ -191,6 +192,32 @@ nav {
 
 .table__tbody-link--border-left {
     border-left: 0.5px solid black;
+}
+
+/* Paginacion */
+.pagination {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.pagination__link {
+    padding: 4px 8px;
+    color: black;
+    background-color: whitesmoke;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pagination__link--active {
+    background-color: lightblue;
+}
+
+.pagination__link:hover {
+    color: whitesmoke;
+    background-color: black;
+    border: 1px solid whitesmoke;
+    font-weight: bold;
 }
 
 /* Mensaje de alerta / error al borrar marca */
