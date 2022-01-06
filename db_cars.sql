@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2021 a las 02:19:48
+-- Tiempo de generación: 06-01-2022 a las 17:27:57
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -40,7 +40,6 @@ CREATE TABLE `autos` (
 --
 
 INSERT INTO `autos` (`id_auto`, `modelo`, `origen`, `anio`, `id_marca`) VALUES
-(2, 'Chevy', 'Argentina', 1969, 1),
 (3, 'R107', 'Alemania', 1971, 5),
 (4, '300zx', 'Japón', 1969, 6),
 (5, '505', 'Francia', 1979, 7),
@@ -53,7 +52,9 @@ INSERT INTO `autos` (`id_auto`, `modelo`, `origen`, `anio`, `id_marca`) VALUES
 (12, 'Montero', 'Japón', 1982, 12),
 (13, 'Corsa', 'Argentina', 1990, 1),
 (14, 'E3', 'Alemania', 1968, 15),
-(18, 'Cruze', 'Argentina', 2021, 1);
+(18, 'Cruze', 'Argentina', 2021, 1),
+(21, 'Chevy', 'Argentina', 1969, 1),
+(22, '600', 'Italia', 1955, 3);
 
 -- --------------------------------------------------------
 
@@ -75,11 +76,28 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id_comentario`, `contenido`, `fecha`, `puntaje`, `user`, `id_auto`) VALUES
-(10, 'EHhhahdhawd', '27/11/2021 21:09', 3, 'VALEN', 2),
-(36, 'aaaaaaaaaaaaaaa', '27/11/2021 23:52', 1, 'CACHO', 2),
-(49, 'adadad', '28/11/2021 21:11', 4, 'NICO', 2),
-(52, 'Hola', '28/11/2021 21:54', 1, 'NICO', 2),
-(56, 'Hola', '01/12/2021 14:19', 2, 'NICO', 3);
+(63, 'Que piola estan las imagenes', '08/12/2021 21:14', 4, 'NICO', 3),
+(65, 'Ya esta hecha la paginacion', '12/12/2021 15:49', 5, 'NICO', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagenes`
+--
+
+CREATE TABLE `imagenes` (
+  `id_imagen` int(11) NOT NULL,
+  `ruta` varchar(45) NOT NULL,
+  `id_auto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id_imagen`, `ruta`, `id_auto`) VALUES
+(47, 'img/cars/61b40996ac113.jpg', 3),
+(48, 'img/cars/61b40996ac1b7.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -130,7 +148,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user`, `password`, `rol`) VALUES
 ('CACHO', '$2y$10$l8JQC11ialHQKdogBZb5o.T2C.p55MTpVmlSUXbUPNvRHLvbSkyN2', 'user'),
-('JAVIER', '$2y$10$ruvbdz8a35x0h.mNHbkKJ.p2JWEK9sQTTKcwvUeFg2GE3gTbMPZiG', 'admin'),
+('JAVIER', '$2y$10$ruvbdz8a35x0h.mNHbkKJ.p2JWEK9sQTTKcwvUeFg2GE3gTbMPZiG', 'user'),
 ('NICO', '$2y$10$G1k9qLBpCThKUp3444TDmuXaZvXQiS/1WKJGtbCHTeEviD9ohNTiq', 'admin'),
 ('VALEN', '$2y$10$2sHCp3XYsfhY/HF7CDLye.BBSiIY5wQ.k48iBQU1r82fAgQbqXzvm', 'admin');
 
@@ -154,6 +172,13 @@ ALTER TABLE `comentarios`
   ADD KEY `id_auto` (`id_auto`);
 
 --
+-- Indices de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD PRIMARY KEY (`id_imagen`),
+  ADD KEY `id_auto` (`id_auto`);
+
+--
 -- Indices de la tabla `marcas`
 --
 ALTER TABLE `marcas`
@@ -173,13 +198,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `autos`
 --
 ALTER TABLE `autos`
-  MODIFY `id_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
@@ -203,6 +234,12 @@ ALTER TABLE `autos`
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`user`) ON DELETE CASCADE,
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_auto`) REFERENCES `autos` (`id_auto`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`id_auto`) REFERENCES `autos` (`id_auto`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
