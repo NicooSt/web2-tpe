@@ -40,6 +40,12 @@
             // $params[1] = pagina, params[2] = marca
             $carsController->filterByMark($params[1], $params[2]);
             break;
+        case 'showAdvancedSearch':
+            $carsController->showAdvancedSearch();
+            break;
+        case 'advancedSearch':
+            $carsController->advancedSearch();
+            break;
         case 'showAddCar':
             $adminController->showAddCar();
             break;
@@ -91,19 +97,19 @@
         case 'register':
             $registerController->userRegister();
             break;
+        case 'verifyRegister':
+            $registerController->verifyRegister();
+            break;
         case 'login':
             $sessionController->userLogin();
             break;
         case 'logout':
             $sessionController->userLogout();
             break;
-        case 'verifyRegister':
-            $registerController->verifyRegister();
-            break;
         case 'verifyLogin':
             $sessionController->verifyLogin();
             break;
         default:
-            echo 'Error';
+            echo 'Error en Route.php';
             break;       
     }

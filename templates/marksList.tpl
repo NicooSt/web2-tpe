@@ -14,7 +14,7 @@
             {foreach from=$marks item=$mark}
                 <tr class="table__tbody-row">
                     <td class="table__tbody-cell">{$mark->marca}</td>
-                    <td class="table__tbody-cell">{$mark->origen}</td>
+                    <td class="table__tbody-cell">{$mark->origen_marca}</td>
                     <td class="table__tbody-cell">{$mark->fundacion}</td>                
                     {if $rol == 'admin'}
                         <td class="table__tbody-cell table__tbody-cell--cont-link table__tbody-cell--cont-delete-edit">

@@ -54,4 +54,14 @@
             $this->smarty->assign('rol', $_SESSION['rol']);
             $this->smarty->display('templates/marksList.tpl');
         }
+
+        function showAdvancedSearchPage($cars, $message) {
+            $this->smarty->assign('tab', 'Busqueda avanzada');
+            $this->smarty->assign('mark', '');
+            $this->smarty->assign('cars', $cars);
+            $this->smarty->assign('message', $message);
+            $this->smarty->assign('userLogged', $_SESSION['user']);
+            $this->smarty->assign('rol', $_SESSION['rol']);
+            $this->smarty->display('templates/advancedSearch.tpl');
+        }
     }

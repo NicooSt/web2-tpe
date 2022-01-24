@@ -13,17 +13,17 @@
     <title>{if $mark != ''}Lista de {$mark}{else}{$tab}{/if}</title>
 </head>
 <body>
-    <nav>
-        <div class="nav-div-logo">
-            <img src="img/logo/logo-auto.png" alt="logo">
+    <nav class="nav">
+        <div class="nav__elem1">
+            <img class="nav__logo-img" src="img/logo/logo-auto.png" alt="logo">
         </div>
-        <div class="nav-div-btn">
-            <a href="cars">Lista de autos</a>
-            <a href="marks">Lista de marcas</a>
+        <div class="nav__elem2">
+            <a class="nav__btnLists-btnCars" href="cars">Lista de autos</a>
+            <a class="nav__btnLists-btnMarks" href="marks">Lista de marcas</a>
         </div>
-        <div class="nav-div-logout">
-            <p id="usuario">{$userLogged}</p>
-            <a href="logout">Cerrar sesión</a>
-            {if $rol == 'admin'}<a href="admin">Admin</a>{else}{/if}
+        <div class="nav__elem3">
+            <p class="nav__userName" id="usuario">{$userLogged}</p>
+            <a class="nav__logOut" href="logout">Cerrar sesión</a>
+            {if $rol == 'admin'}<a class="nav__adminBtn" href="admin">Admin</a>{else}{/if}
         </div>
     </nav>

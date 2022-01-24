@@ -25,6 +25,23 @@
             $this->view->showCarsList($cars, $marksFilter, $totalPages, $actualPage);
         }
 
+        function showCar($id) {
+            $this->authHelper->checkLoggedIn();
+            $car = $this->model->getCar($id);
+            $images = $this->model->getCarImages($id);
+            if ($images) {
+                $this->view->showCarDesc($car, $images);
+            } else {
+                $this->view->showCarDesc($car, '');
+            }
+        }
+
+        function showMarks() {
+            $this->authHelper->checkLoggedIn();
+            $marks = $this->model->getMarksList();
+            $this->view->showMarksList($marks, "");
+        }
+
         function filterByMark($actualPage, $mark) {
             if (isset($_POST['filter'])) {
                 if ($_POST['filter'] != 'Todos') {
@@ -56,20 +73,36 @@
             }
         }
 
-        function showCar($id) {
+        function showAdvancedSearch() {
             $this->authHelper->checkLoggedIn();
-            $car = $this->model->getCar($id);
-            $images = $this->model->getCarImages($id);
-            if ($images) {
-                $this->view->showCarDesc($car, $images);
+            $this->view->showAdvancedSearchPage('', '');
+        }
+
+        function advancedSearch() {
+            $this->authHelper->checkLoggedIn();
+            $empty = $this->checkEmpty($_POST);
+            if ($empty) {
+                $this->view->showAdvancedSearchPage('', 'Complete algún campo');
             } else {
-                $this->view->showCarDesc($car, '');
+                $cars = $this->model->getAdvancedSearch($_POST);
+                if ($cars) {
+                    $this->view->showAdvancedSearchPage($cars, '');
+                } else {
+                    $this->view->showAdvancedSearchPage('', 'No existen autos que cumplan con esas condiciones');
+                }
             }
         }
 
-        function showMarks() {
-            $this->authHelper->checkLoggedIn();
-            $marks = $this->model->getMarksList();
-            $this->view->showMarksList($marks, "");
+        function checkEmpty($params) {
+            $empty = true;
+            foreach ($params as $param => $value) {
+                if ($params[$param] != "") {
+                    $empty = false;
+                    break;
+                } else {
+                    $empty = true;
+                }
+            }
+            return $empty;
         }
     }
