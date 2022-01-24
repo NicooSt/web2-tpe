@@ -54,4 +54,4 @@ La página funciona en un servidor web local, en este caso se utilizó Apache.
   
 ## Próximas funciones a agregar
 - Orden de comentarios por antigüedad o puntaje.
-- Filtro de comentarios por cantidad de punto.
+- Filtro de comentarios por cantidad de puntos.
