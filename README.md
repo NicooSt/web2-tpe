@@ -51,7 +51,11 @@ La página funciona en un servidor web local, en este caso se utilizó Apache.
   - La página posee un formulario de búsqueda avanzada de ítems.
   - La búsqueda funciona igual que el filtro solo que además se puede buscar por los demás atributos del ítem.
   - Los atributos del ítem son 4 por lo que se podrá buscar por 1, 2, 3 o los 4 atributos.
-  
+
+Cuenta admin:
+- User: NICO
+- Pass: 1234
+   
 ## Próximas funciones a agregar
 - Orden de comentarios por antigüedad o puntaje.
 - Filtro de comentarios por cantidad de puntos.
